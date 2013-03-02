@@ -1,7 +1,5 @@
 # RedisAdapter
 
-> Unfinished!  Let me know if you'd like to help.  @mikermcneil on twitter.
-
 Sails.js adapter for Redis.
 
 
