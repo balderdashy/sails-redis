@@ -1,7 +1,7 @@
 {
-  "name": "waterline-redis",
+  "name": "sails-redis",
   "version": "0.0.0",
-  "description": "Redis adapter for Waterline ORM",
+  "description": "Redis adapter for Sails.js",
   "scripts": {
     "test": "mocha"
   },
