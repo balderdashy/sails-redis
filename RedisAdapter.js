@@ -42,7 +42,7 @@ module.exports = (function(){
       if (!clients[collection.identity]) {
         clients[collection.identity] = marshalConfig(collection);
       }
-
+      
       return cb();
     },
 
@@ -72,20 +72,18 @@ module.exports = (function(){
     return _.extend(config, {
       port: config.port,
       host: config.host,
-      options: config.options
+      options: config.options,
+      password: config.password
     });
   }
 
   function connect(collection, cb) {
-    try {
-      redisClient = redis.createClient(collection.port, collection.host, collection.options);
-      if(collection.password) redisClient.auth(collection.password, function(){
-        return true;
-      });
-      return redisClient;
-    } catch (e) {
-      return cb(e);
+    if(collection.password != null) {
+      return redis.createClient(collection.port, collection.host, collection.options).auth(collection.password);
+    } else {
+      return redis.createClient(collection.port, collection.host, collection.options);
     }
+    return cb();
   }
   
   return adapter;
