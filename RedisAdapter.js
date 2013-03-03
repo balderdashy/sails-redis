@@ -5,25 +5,48 @@
 
 var async = require('async')
 , _       = require('underscore')
-, _.str   = require('underscore.string')
-, redis   = require('redis')
-, client  = redis.createClient();
+, _str    = require('underscore.string')
+, redis   = require('redis');
 
 module.exports = (function(){
+
+  // Keep track of Redis clients
+  var clients = {};
 
   var adapter = {
 
     syncable: false,
 
-    registerCollection: function(collection, cb) {},
+    defaults: {
+      port: 6379,
+      host: 'localhost',
+      options: {
+        parser: 'hiredis',
+        return_buffers: false,
+        detect_buffers: false,
+        socket_nodelay: true,
+        no_ready_check: false,
+        enable_offline_queue: true
+      },
+      password: null
+    },
 
-    teardown: function(cb) {},
+    registerCollection: function(collection, cb) {
 
-    describe: function(collectionName, cb) {},
+      // Reuse existing connection(s)...
+      clients[collection.identity] =  _.find(clients, function(client) {
+        return collection.host === client.host;
+      });
 
-    define: function(collectionName, definition, cb) {},
+      // ...or create a new one
+      if (!clients[collection.identity]) {
+        clients[collection.identity] = marshalConfig(collection);
+      }
 
-    drop: function(collectionName, cb) {},
+      return cb();
+    },
+
+    // TODO: Add optional support for AOF before the adapter shuts down via teardown method
 
     create: function(collectionName, data, cb) {},
 
@@ -39,12 +62,32 @@ module.exports = (function(){
 
   };
 
-  return adapter;
-
   //////////////                 //////////////////////////////////////////
   ////////////// Private Methods //////////////////////////////////////////
   //////////////                 //////////////////////////////////////////
 
+  // Convert standard adapter config 
+  // into a custom configuration object for redis
+  function marshalConfig(config) {
+    return _.extend(config, {
+      port: config.port,
+      host: config.host,
+      options: config.options
+    });
+  }
 
+  function connect(collection, cb) {
+    try {
+      redisClient = redis.createClient(collection.port, collection.host, collection.options);
+      if(collection.password) redisClient.auth(collection.password, function(){
+        return true;
+      });
+      return redisClient;
+    } catch (e) {
+      return cb(e);
+    }
+  }
+  
+  return adapter;
 
 })();

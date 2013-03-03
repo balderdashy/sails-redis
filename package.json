@@ -14,7 +14,9 @@
     "redis",
     "orm",
     "waterline",
-    "sails"
+    "sails",
+    "sailsjs",
+    "sails.js"
   ],
   "author": "Carlo DiCelico",
   "license": "MIT",
