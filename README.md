@@ -1,6 +1,7 @@
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png) 
 
 # RedisAdapter
+> Under active development- if you'd like to contribute please join us in the #sailsjs channel on freenode or in sailsjs-dev@googlegroups.com
 
 Adds Redis support for Sails.
 
