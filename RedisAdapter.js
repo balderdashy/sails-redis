@@ -17,9 +17,9 @@ module.exports = (function(){
 
     syncable: false,
 
-    // Enable dev-only commit log for now (in the future, native transaction support will be added)
+    // This is here for testing purposes, until we figure out a way to run tests w/o transactions
     commitLog: {
-      identity: '__default_waterline_mysql_transaction',
+      identity: '__default_waterline_redis_transaction',
       adapter: 'sails-redis'
     },
 
