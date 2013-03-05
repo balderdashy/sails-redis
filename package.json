@@ -18,7 +18,9 @@
     "sailsjs",
     "sails.js"
   ],
-  "author": "Carlo DiCelico",
+  "contributors": [
+    "Carlo DiCelico"
+  ],
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
