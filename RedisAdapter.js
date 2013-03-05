@@ -10,12 +10,18 @@ var async = require('async')
 
 module.exports = (function(){
 
-  // Keep track of Redis clients
-  var clients = {};
+  // Handle to a Redis connection
+  var client = null;
 
   var adapter = {
 
     syncable: false,
+
+    // Enable dev-only commit log for now (in the future, native transaction support will be added)
+    commitLog: {
+      identity: '__default_waterline_mysql_transaction',
+      adapter: 'sails-redis'
+    },
 
     defaults: {
       port: 6379,
@@ -32,31 +38,58 @@ module.exports = (function(){
     },
 
     registerCollection: function(collection, cb) {
-
-      // Reuse existing connection(s)...
-      clients[collection.identity] =  _.find(clients, function(client) {
-        return collection.host === client.host;
-      });
-
-      // ...or create a new one
-      if (!clients[collection.identity]) {
-        clients[collection.identity] = marshalConfig(collection);
-      }
-      
-      return cb();
+      connect(collection, cb);
     },
 
-    // TODO: Add optional support for AOF before the adapter shuts down via teardown method
+    create: function(collectionName, data, cb) {
+      client.on("error", function (err) {
+        console.log("Error " + err);
+      });
 
-    create: function(collectionName, data, cb) {},
+      // Using the collectionName as a key, append a random integer - e.g., users_2940
+      client.set(collectionName + '_' + Math.round(Math.random() * 10000), data);
 
-    find: function(collectionName, options, cb) {},
+      client.quit();
 
-    stream: function(collectionName, options, stream) {},
+      cb();
+    },
 
-    update: function(collectionName, options, values, cb) {},
+    find: function(collectionName, options, cb) {
+      client.on("error", function (err) {
+        console.log("Error " + err);
+      });
 
-    destroy: function(collectionName, options, cb) {},
+      client.get(collectionName);
+
+      client.quit();
+
+      cb();
+    },
+
+    update: function(collectionName, options, values, cb) {
+      // Overwrites old record!
+      client.on("error", function (err) {
+        console.log("Error " + err);
+      });
+
+      client.set(collectionName, values);
+
+      client.quit();
+
+      cb();
+    },
+
+    destroy: function(collectionName, options, cb) {
+      client.on("error", function (err) {
+        console.log("Error " + err);
+      });
+
+      client.del(collectionName);
+
+      client.quit();
+
+      cb();
+    },
 
     identity: 'sails-redis'
 
@@ -79,9 +112,9 @@ module.exports = (function(){
 
   function connect(collection, cb) {
     if(collection.password != null) {
-      return redis.createClient(collection.port, collection.host, collection.options).auth(collection.password);
+      client = redis.createClient(collection.port, collection.host, collection.options).auth(collection.password);
     } else {
-      return redis.createClient(collection.port, collection.host, collection.options);
+      client = redis.createClient(collection.port, collection.host, collection.options);
     }
     return cb();
   }
