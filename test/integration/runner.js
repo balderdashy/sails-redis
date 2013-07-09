@@ -11,16 +11,7 @@ var tests = require('waterline-adapter-tests'),
     mocha = require('mocha');
 
 /**
- * Build a Redis Config File
+ * Run Tests using the default redis config
  */
 
-var config = {
-  host: 'localhost',
-  port: 27017
-};
-
-/**
- * Run Tests
- */
-
-var suite = new tests({ adapter: adapter, config: config });
+var suite = new tests({ adapter: adapter });
