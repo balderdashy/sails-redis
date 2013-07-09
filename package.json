@@ -32,7 +32,7 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "~1.12.0",
-    "waterline-adapter-tests": "git+ssh://git@github.com/balderdashy/waterline-adapter-tests.git"
+    "waterline-adapter-tests": "git://github.com/balderdashy/waterline-adapter-tests.git"
   },
   "dependencies": {
     "redis": "~0.8.4",
