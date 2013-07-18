@@ -1,8 +1,13 @@
-REPORTER = dot
+REPORTER = spec
 
-test:
+test: test_unit test_integration
+
+test_unit:
+	@NODE_ENV=test
+	@./node_modules/.bin/mocha --reporter $(REPORTER) test/**/adapter.*.js
+
+test_integration:
 	@NODE_ENV=test
 	@node test/integration/runner
-	@./node_modules/.bin/mocha --reporter $(REPORTER) test/load/**
 
-.PHONY: test
+.PHONY: test test_unit test_integration
