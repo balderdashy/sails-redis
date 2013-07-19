@@ -1,4 +1,5 @@
-var Adapter = require('../../'),
+var assert = require('assert'),
+    Adapter = require('../../'),
     Support = require('../support')(Adapter),
     Errors = require('waterline-errors').adapter;
 
@@ -80,7 +81,7 @@ describe('create', function() {
     it('should return error on non-auto incrementing primary key', function(done) {
       Adapter.create('string', { name: 'Luke Skywalker' }, function(err, model) {
         assert(err);
-        assert(err.message === Errors.primaryKeyMissing);
+        assert(err.message === Errors.primaryKeyMissing.message);
         done();
       });
     });
