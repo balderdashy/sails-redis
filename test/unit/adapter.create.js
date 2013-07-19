@@ -1,13 +1,17 @@
+/**
+ * Test dependencies
+ */
+
 var assert = require('assert'),
     Adapter = require('../../'),
     Support = require('../support')(Adapter),
     Errors = require('waterline-errors').adapter;
 
 /**
- * Raw adapter creation tests
+ * Raw waterline-redis `.create()` tests
  */
 
-describe('create', function() {
+describe('adapter `.create()`', function() {
 
   describe('with numeric id', function() {
     before(function(done) {
@@ -86,4 +90,5 @@ describe('create', function() {
       });
     });
   });
+
 });
