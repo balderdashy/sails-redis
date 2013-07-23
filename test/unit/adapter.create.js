@@ -91,4 +91,101 @@ describe('adapter `.create()`', function() {
     });
   });
 
+  describe('with unique attributes', function() {
+    before(function(done) {
+      var definition = {
+        id: {
+          type: 'integer',
+          primaryKey: true
+        },
+        email: {
+          type: 'string',
+          unique: true
+        }
+      };
+
+      Support.Setup('unique', definition, done);
+    });
+
+    after(function(done) {
+      Support.Teardown('unique', done);
+    });
+
+    it('should not create record with non-unique attributes', function(done) {
+      var attributes = {
+        id: 1,
+        email: 'darth@hotmail.com'
+      };
+
+      Adapter.create('unique', attributes, function(err, model) {
+        if(err) throw err;
+
+        Adapter.create('unique', attributes, function(err, model) {
+          assert(err);
+          assert(err.message === Errors.notUnique.message);
+          assert(!model);
+          done();
+        });
+      });
+    });
+
+    it('should create record with unique attributes', function(done) {
+      Adapter.create('unique', { id: 2, email: 'han@hotmail.com' }, function(err, model) {
+        if(err) throw err;
+
+        assert(model);
+        assert(model.id === 2);
+        assert(model.email === 'han@hotmail.com');
+
+        Adapter.create('unique', { id: 3, email: 'luke@hotmail.com' }, function(err, model) {
+          if(err) throw err;
+
+          assert(model);
+          assert(model.id === 3);
+          assert(model.email === 'luke@hotmail.com');
+          done();
+        });
+      });
+    });
+  });
+
+  describe('with auto incrementing attributes', function() {
+    before(function(done) {
+      var definition = {
+        id: {
+          type: 'integer',
+          primaryKey: true,
+          autoIncrement: true
+        },
+        age: {
+          type: 'integer',
+          autoIncrement: true
+        },
+        number: {
+          type: 'integer',
+          autoIncrement: true
+        }
+      };
+
+      Support.Setup('auto', definition, done);
+    });
+
+    after(function(done) {
+      Support.Teardown('auto', done);
+    });
+
+    it('should create record with auto increments', function(done) {
+      Adapter.create('auto', {}, function(err, model) {
+        if(err) throw err;
+
+        assert(model);
+        assert(model.id === 1);
+        assert(model.age === 1);
+        assert(model.number === 1);
+        done();
+      });
+    });
+
+  });
+
 });
