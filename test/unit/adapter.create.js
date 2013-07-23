@@ -186,6 +186,14 @@ describe('adapter `.create()`', function() {
       });
     });
 
+    it('should not allow auto increment values to be set', function(done) {
+      Adapter.create('auto', { age: 1, number: 1 }, function(err, model) {
+        assert(err);
+        assert(err.message === Errors.invalidAutoIncrement.message);
+        assert(!model);
+        done();
+      });
+    });
   });
 
 });
