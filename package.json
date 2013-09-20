@@ -18,7 +18,9 @@
     "sailsjs",
     "sails.js"
   ],
+  "author": "vanetix",
   "contributors": [
+    "xdissent",
     "Carlo DiCelico"
   ],
   "license": "MIT",
