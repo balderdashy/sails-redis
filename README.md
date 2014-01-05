@@ -10,7 +10,7 @@ This `waterline-redis` stores indexes of unique attributes for *relatively* fast
 
 ## Installing
 
-To install *sails-redis* run `npm install git+ssh://git@github.com:balderdashy/sails-redis.git --save` from your project directory or add `"sails-redis": "git+ssh://git@github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
+To install *sails-redis* run `npm install git://github.com/balderdashy/sails-redis.git` from your project directory or add `"sails-redis": "git://github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
 
 ## License (MIT)
 
