@@ -56,11 +56,6 @@ See `FAQ.md`.
 See `CONTRIBUTING.md`.
 
 
+## MIT License
 
-## About Waterline
-
-Waterline is a new kind of storage and retrieval engine.  It provides a uniform API for accessing stuff from different kinds of databases, protocols, and 3rd party APIs.  That means you write the same code to get users, whether they live in mySQL, LDAP, MongoDB, or Facebook.
-
-To learn more visit the project on GitHub at [Waterline](https://github.com/balderdashy/waterline).
-
-
+See `LICENSE.md`.
