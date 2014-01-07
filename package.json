@@ -6,12 +6,12 @@
   "author": "vanetix <matmcfarland@gmail.com>",
   "contributors": [
     {
-      "name": "Carlo DiCelico",
-      "email": "carlo@diceli.co"
-    },
-    {
       "name": "Matt McFarland",
       "email": "matmcfarland@gmail.com"
+    },
+    {
+      "name": "Carlo DiCelico",
+      "email": "carlo@diceli.co"
     }
   ],
   "scripts": {
