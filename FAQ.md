@@ -1,7 +1,7 @@
 # FAQ (Frequently-Asked Questions)
 
 
-> #### Got a question that isn't covered here?
+> **Got a question that isn't covered here?**
 >
 > Send a PR that adds it to this file and we might be able to answer it.
 
