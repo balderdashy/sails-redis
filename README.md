@@ -1,16 +1,49 @@
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
-# waterline-redis [![Build Status](https://travis-ci.org/vanetix/sails-redis.png)](https://travis-ci.org/vanetix/sails-redis)
+# Redis Sails/Waterline Adapter [![Build Status](https://travis-ci.org/vanetix/sails-redis.png)](https://travis-ci.org/vanetix/sails-redis)
 
 *Note: This adapter is under active development, and most functions are currently extremely inefficient.*
 
-## Details
+A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
 
 This `waterline-redis` stores indexes of unique attributes for *relatively* fast lookups. Collections with multiple unique constraints will create multiple index sets.
+
 
 ## Installing
 
 To install *sails-redis* run `npm install git+ssh://git@github.com:balderdashy/sails-redis.git --save` from your project directory or add `"sails-redis": "git+ssh://git@github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
+
+In the near future, `sails-redis` will be available on npm.
+
+<!--
+Install is through NPM.
+
+```bash
+$ npm install sails-redis
+```
+-->
+
+## Configuration
+
+The following config options are available along with their default values:
+
+```javascript
+// TODO
+```
+
+<!--
+config: {
+  database: 'databaseName',
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  port: 5432,
+  pool: false
+};
+-->
+
+
+
 
 ## FAQ
 
@@ -31,6 +64,32 @@ This caused freezes the first time I tried it but after a reboot, running `npm i
 > #### Got a question that isn't covered here?
 >
 > Send a PR that adds it to this question and we might be able to answer it!
+
+
+## Contribute
+
+#### Setup
+
+Clone this repository, `cd` into it, and run `npm install`.
+
+#### Tests
+
+Tests are written with mocha. Integration tests are handled by the [waterline-adapter-tests](https://github.com/balderdashy/waterline-adapter-tests) project, which tests adapter methods against the latest Waterline API.
+
+To run tests:
+
+```bash
+$ npm test
+```
+
+
+
+## About Waterline
+
+Waterline is a new kind of storage and retrieval engine.  It provides a uniform API for accessing stuff from different kinds of databases, protocols, and 3rd party APIs.  That means you write the same code to get users, whether they live in mySQL, LDAP, MongoDB, or Facebook.
+
+To learn more visit the project on GitHub at [Waterline](https://github.com/balderdashy/waterline).
+
 
 
 ## License (MIT)
