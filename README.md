@@ -9,7 +9,7 @@ A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com
 This `waterline-redis` stores indexes of unique attributes for *relatively* fast lookups. Collections with multiple unique constraints will create multiple index sets.
 
 
-## Installing
+## Install
 
 To install *sails-redis* run `npm install git+ssh://git@github.com:balderdashy/sails-redis.git --save` from your project directory or add `"sails-redis": "git+ssh://git@github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
 
