@@ -1,4 +1,4 @@
-# FAQ (Frequently-Asked Questions)
+# FAQ
 
 
 > **Got a question that isn't covered here?**
@@ -6,6 +6,7 @@
 > Send a PR that adds it to this file and we might be able to answer it.
 
 
+## Frequently-Asked Questions
 
 #### I get an error when I `npm install` this adapter
 
