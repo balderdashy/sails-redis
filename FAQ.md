@@ -31,5 +31,5 @@ Waterline is a new kind of storage and retrieval engine.  It provides a uniform 
 
 It is also the ORM layer for the [Sails framework](http://sailsjs.org).
 
-To learn more visit the project on GitHub at [Waterline](https://github.com/balderdashy/waterline).
+To learn more visit the project [on GitHub](https://github.com/balderdashy/waterline).
 
