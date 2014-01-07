@@ -35,7 +35,7 @@ This caused freezes the first time I tried it but after a reboot, running `npm i
 
 ## License (MIT)
 
-Copyright © 2013-2014 Balderdash Design Co. and contributors
+Copyright © 2013-2014 Balderdash Design Co., Matt McFarland, and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
