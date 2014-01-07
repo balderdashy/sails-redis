@@ -28,9 +28,7 @@ sudo xcode-select -switch /
 This caused freezes the first time I tried it but after a reboot, running `npm install` worked flawlessly.
 
 
-#### Got a question?
-
-> Got a question that isn't covered here?
+> #### Got a question that isn't covered here?
 >
 > Send a PR that adds it to this question and we might be able to answer it!
 
