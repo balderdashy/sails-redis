@@ -24,4 +24,11 @@ sudo xcode-select -switch /
 This caused freezes the first time I tried it but after a reboot, running `npm install` worked flawlessly.
 
 
+#### What is Waterline?
+
+Waterline is a new kind of storage and retrieval engine.  It provides a uniform API for accessing stuff from different kinds of databases, protocols, and 3rd party APIs.  That means you write the same code to get users, whether they live in mySQL, LDAP, MongoDB, or Facebook.
+
+It is also the ORM layer for the [Sails framework](http://sailsjs.org).
+
+To learn more visit the project on GitHub at [Waterline](https://github.com/balderdashy/waterline).
 
