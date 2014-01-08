@@ -82,7 +82,7 @@ describe('adapter `.destroy()`', function() {
       Support.Setup('destroy', definition, function(err) {
         if(err) throw err;
 
-        async.each([1, 2, 3, 4],
+        async.eachSeries([1, 2, 3, 4],
           function(i, done) {
             Adapter.create('destroy', { email: i, name: 'User ' + i }, done);
           },
