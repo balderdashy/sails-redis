@@ -40,6 +40,7 @@
     "redis": "~0.8.4",
     "hiredis": "~0.1.15",
     "async": "~0.2.9",
-    "waterline-errors": "git+https://github.com/vanetix/waterline-errors.git"
+    "waterline-errors": "git://github.com/vanetix/waterline-errors.git",
+    "waterline-criteria": "git://github.com/balderdashy/waterline-criteria.git#associations"
   }
 }
