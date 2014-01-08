@@ -40,7 +40,7 @@ module.exports = function(adapter) {
    */
 
   Support.Teardown = function(collection, callback) {
-    adapter.drop(collection, callback);
+    adapter.drop(collection, [], callback);
   };
 
   return Support;
