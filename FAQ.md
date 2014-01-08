@@ -33,3 +33,7 @@ It is also the ORM layer for the [Sails framework](http://sailsjs.org).
 
 To learn more visit the project [on GitHub](https://github.com/balderdashy/waterline).
 
+
+#### Why was the `hiredis` dependency removed?
+
+Until further benchmarking can prove its benefit, the headache of having to have a compiler installed for the C binding isn't worth it.  An optional dependency would also be another valid approach.
