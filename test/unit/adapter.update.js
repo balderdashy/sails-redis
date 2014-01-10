@@ -40,8 +40,8 @@ describe('adapter `.update()`', function() {
       Adapter.update('update', { id: 1 }, { name: 'Sobchak' }, function(err, model) {
         if(err) throw err;
 
-        assert(model.id === 1);
-        assert(model.name === 'Sobchak');
+        assert(model[0].id === 1);
+        assert(model[0].name === 'Sobchak');
         done();
       });
     });
@@ -79,9 +79,8 @@ describe('adapter `.update()`', function() {
       Support.Teardown('update', done);
     });
 
-    // TODO: Fix handling of unique checks on update method
     it('should check for unique values', function(done) {
-      Adapter.update('update', { name: 'The Dude' }, { number: 3 }, function(err) {
+      Adapter.update('update', { where: { name: 'The Dude' }}, { number: 3 }, function(err) {
         assert(err);
         assert(err.message === Errors.notUnique.message);
         done();
