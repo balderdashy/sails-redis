@@ -40,7 +40,6 @@ describe('adapter `.create()`', function() {
 
       Adapter.create('numeric', attributes, function(err, model) {
         if(err) throw err;
-
         assert(model.id === 1);
         assert(model.name === 'Darth Vader');
         done();
