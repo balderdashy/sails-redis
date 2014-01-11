@@ -35,10 +35,10 @@ describe('adapter `.drop()`', function() {
   });
 
   it('should create all index sets', function(done) {
-    Adapter._transaction.exec(done, function(callback) {
-      var redis = this;
+    Adapter.native('drop', function(err, connection) {
+      var redis = connection;
 
-      redis.exists('waterline:drop:_meta', function(err, exists) {
+      redis.exists('waterline:drop:_sequences:id', function(err, exists) {
         if(err) throw err;
         assert(exists);
 
@@ -46,10 +46,15 @@ describe('adapter `.drop()`', function() {
           if(err) throw err;
           assert(exists);
 
-          redis.exists('waterline:drop:email', function(err, exists) {
+          redis.exists('waterline:drop:_indicies:email', function(err, exists) {
             if(err) throw err;
             assert(exists);
-            callback();
+
+            redis.exists('waterline:drop:id:1', function(err, exists) {
+              if(err) throw err;
+              assert(exists);
+              done();
+            });
           });
         });
       });
@@ -60,10 +65,10 @@ describe('adapter `.drop()`', function() {
     Adapter.drop('drop', function(err) {
       assert(!err);
 
-      Adapter._transaction.exec(done, function(callback) {
-        var redis = this;
+      Adapter.native('drop', function(err, connection) {
+        var redis = connection;
 
-        redis.exists('waterline:drop:_meta', function(err, exists) {
+        redis.exists('waterline:drop:_sequences:id', function(err, exists) {
           if(err) throw err;
           assert(!exists);
 
@@ -71,10 +76,15 @@ describe('adapter `.drop()`', function() {
             if(err) throw err;
             assert(!exists);
 
-            redis.exists('waterline:drop:email', function(err, exists) {
+            redis.exists('waterline:drop:_indicies:email', function(err, exists) {
               if(err) throw err;
               assert(!exists);
-              callback();
+
+              redis.exists('waterline:drop:id:1', function(err, exists) {
+                if(err) throw err;
+                assert(!exists);
+                done();
+              });
             });
           });
         });

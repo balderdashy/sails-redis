@@ -104,7 +104,7 @@ describe('adapter `.find()`', function() {
     });
 
     it("should properly return records using `like`", function(done) {
-      var criteria = { where: { name: { like: '%eve%' } } };
+      var criteria = { where: { like: { name: '%eve%' } } };
 
       Adapter.find('finders', criteria, function(err, records) {
         if(err) throw err;
@@ -113,15 +113,7 @@ describe('adapter `.find()`', function() {
         assert(records.length === 1);
         assert(records[0].name === 'Steve Holt');
 
-        criteria.where.name.like = 'eve';
-        Adapter.find('finders', criteria, function(err, records) {
-          if(err) throw err;
-
-          assert(records);
-          assert(records.length === 1);
-          assert(records[0].name === 'Steve Holt');
-          done();
-        });
+        done();
       });
     });
 
