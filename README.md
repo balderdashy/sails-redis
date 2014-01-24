@@ -28,6 +28,7 @@ The following connection configuration is available:
 ```javascript
 // default values inline
 config: {
+  module: 'sails-redis', 
   port: 6379,
   host: 'localhost',
   password: null,
