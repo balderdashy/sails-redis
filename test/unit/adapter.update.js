@@ -28,7 +28,7 @@ describe('adapter `.update()`', function() {
 
       Support.Setup('update', definition, function(err) {
         if(err) throw err;
-        Adapter.create('update', { name: 'Walter' }, done);
+        Adapter.create('test', 'update', { name: 'Walter' }, done);
       });
     });
 
@@ -37,7 +37,7 @@ describe('adapter `.update()`', function() {
     });
 
     it('should properly update attributes', function(done) {
-      Adapter.update('update', { id: 1 }, { name: 'Sobchak' }, function(err, model) {
+      Adapter.update('test', 'update', { id: 1 }, { name: 'Sobchak' }, function(err, model) {
         if(err) throw err;
 
         assert(model[0].id === 1);
@@ -68,9 +68,9 @@ describe('adapter `.update()`', function() {
       Support.Setup('update', definition, function(err) {
         if(err) throw err;
 
-        Adapter.create('update', { name: 'The Dude', number: 1 }, function(err) {
+        Adapter.create('test', 'update', { name: 'The Dude', number: 1 }, function(err) {
           if(err) throw err;
-          Adapter.create('update', { name: 'Donny', number: 3 }, done);
+          Adapter.create('test', 'update', { name: 'Donny', number: 3 }, done);
         });
       });
     });
@@ -80,7 +80,7 @@ describe('adapter `.update()`', function() {
     });
 
     it('should check for unique values', function(done) {
-      Adapter.update('update', { where: { name: 'The Dude' }}, { number: 3 }, function(err) {
+      Adapter.update('test', 'update', { where: { name: 'The Dude' }}, { number: 3 }, function(err) {
         assert(err);
         assert(err.message === Errors.notUnique.message);
         done();

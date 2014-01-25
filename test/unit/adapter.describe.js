@@ -32,7 +32,7 @@ describe('adapter `.describe()`', function() {
     });
 
     it('should properly describe attributes', function(done) {
-      Adapter.describe('simple', function(err, definition) {
+      Adapter.describe('test', 'simple', function(err, definition) {
         if(err) throw err;
 
         assert(definition.id.primaryKey);
@@ -73,7 +73,7 @@ describe('adapter `.describe()`', function() {
     });
 
     it('should properly describe attributes', function(done) {
-      Adapter.describe('complex', function(err, definition) {
+      Adapter.describe('test', 'complex', function(err, definition) {
         if(err) throw err;
 
         assert(definition.id.primaryKey);

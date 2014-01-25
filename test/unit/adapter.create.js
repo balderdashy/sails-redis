@@ -38,7 +38,7 @@ describe('adapter `.create()`', function() {
         name: 'Darth Vader'
       };
 
-      Adapter.create('numeric', attributes, function(err, model) {
+      Adapter.create('test', 'numeric', attributes, function(err, model) {
         if(err) throw err;
         assert(model.id === 1);
         assert(model.name === 'Darth Vader');
@@ -72,7 +72,7 @@ describe('adapter `.create()`', function() {
         email: 'han.solo@yahoo.com'
       };
 
-      Adapter.create('string', attributes, function(err, model) {
+      Adapter.create('test', 'string', attributes, function(err, model) {
         if(err) throw err;
 
         assert(model.name === 'Han Solo');
@@ -82,7 +82,7 @@ describe('adapter `.create()`', function() {
     });
 
     it('should return error on non-auto incrementing primary key', function(done) {
-      Adapter.create('string', { name: 'Luke Skywalker' }, function(err, model) {
+      Adapter.create('test', 'string', { name: 'Luke Skywalker' }, function(err, model) {
         assert(err);
         assert(err.message === Errors.primaryKeyMissing.message);
         done();
@@ -116,10 +116,10 @@ describe('adapter `.create()`', function() {
         email: 'darth@hotmail.com'
       };
 
-      Adapter.create('unique', attributes, function(err, model) {
+      Adapter.create('test', 'unique', attributes, function(err, model) {
         if(err) throw err;
 
-        Adapter.create('unique', attributes, function(err, model) {
+        Adapter.create('test', 'unique', attributes, function(err, model) {
           assert(err);
           assert(err.message === Errors.notUnique.message);
           assert(!model);
@@ -129,14 +129,14 @@ describe('adapter `.create()`', function() {
     });
 
     it('should create record with unique attributes', function(done) {
-      Adapter.create('unique', { id: 2, email: 'han@hotmail.com' }, function(err, model) {
+      Adapter.create('test', 'unique', { id: 2, email: 'han@hotmail.com' }, function(err, model) {
         if(err) throw err;
 
         assert(model);
         assert(model.id === 2);
         assert(model.email === 'han@hotmail.com');
 
-        Adapter.create('unique', { id: 3, email: 'luke@hotmail.com' }, function(err, model) {
+        Adapter.create('test', 'unique', { id: 3, email: 'luke@hotmail.com' }, function(err, model) {
           if(err) throw err;
 
           assert(model);
@@ -174,7 +174,7 @@ describe('adapter `.create()`', function() {
     });
 
     it('should create record with auto increments', function(done) {
-      Adapter.create('auto', {}, function(err, model) {
+      Adapter.create('test', 'auto', {}, function(err, model) {
         if(err) throw err;
 
         assert(model);
@@ -186,7 +186,7 @@ describe('adapter `.create()`', function() {
     });
 
     it('should not allow auto increment values to be set', function(done) {
-      Adapter.create('auto', { age: 1, number: 1 }, function(err, model) {
+      Adapter.create('test', 'auto', { age: 1, number: 1 }, function(err, model) {
         assert(err);
         assert(err.message === Errors.invalidAutoIncrement.message);
         assert(!model);

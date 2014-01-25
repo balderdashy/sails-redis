@@ -29,7 +29,27 @@ module.exports = function(adapter) {
    */
 
   Support.Setup = function(name, def, callback) {
-    adapter.registerCollection(this.Configure(name, def), callback);
+    var connection = {
+      identity: 'test',
+      port: 6379,
+      host: 'localhost',
+      password: null,
+      options: {
+        return_buffers: false,
+        detect_buffers: false,
+        socket_nodelay: true,
+        no_ready_check: false,
+        enable_offline_queue: true
+      }
+    };
+
+    var collection = this.Configure(name, def);
+    collection.definition.connection = 'test';
+
+    var collections = {};
+    collections[name] = collection;
+
+    adapter.registerConnection(connection, collections, callback);
   };
 
   /**
@@ -40,7 +60,9 @@ module.exports = function(adapter) {
    */
 
   Support.Teardown = function(collection, callback) {
-    adapter.drop(collection, [], callback);
+    adapter.drop('test', collection, [], function(err) {
+      adapter.teardown('test', callback);
+    });
   };
 
   return Support;

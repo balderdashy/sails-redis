@@ -27,7 +27,7 @@ describe('adapter `.drop()`', function() {
     Support.Setup('drop', definition, function(err) {
       if(err) throw err;
 
-      Adapter.create('drop', { email: 'jabba@hotmail.com' }, function(err) {
+      Adapter.create('test', 'drop', { email: 'jabba@hotmail.com' }, function(err) {
         if(err) throw err;
         done();
       });
@@ -35,7 +35,7 @@ describe('adapter `.drop()`', function() {
   });
 
   it('should create all index sets', function(done) {
-    Adapter.native('drop', function(err, connection) {
+    Adapter.native('test', 'drop', function(err, connection) {
       var redis = connection;
 
       redis.exists('waterline:drop:_sequences:id', function(err, exists) {
@@ -62,10 +62,10 @@ describe('adapter `.drop()`', function() {
   });
 
   it('should drop all index sets', function(done) {
-    Adapter.drop('drop', [], function(err) {
+    Adapter.drop('test', 'drop', [], function(err) {
       assert(!err);
 
-      Adapter.native('drop', function(err, connection) {
+      Adapter.native('test', 'drop', function(err, connection) {
         var redis = connection;
 
         redis.exists('waterline:drop:_sequences:id', function(err, exists) {
