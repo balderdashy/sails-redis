@@ -26,23 +26,23 @@ describe('adapter `.find()`', function() {
       }
     };
 
-    Support.Setup('finders', definition, function(err) {
-      Adapter.create('test', 'finders', { name: 'Steve Holt', age: 19 }, function(err) {
+    Support.Setup('finders', 'finders', definition, function(err) {
+      Adapter.create('finders', 'finders', { name: 'Steve Holt', age: 19 }, function(err) {
         if(err) throw err;
-        Adapter.create('test', 'finders', { name: 'Annyong', age: 18 }, done);
+        Adapter.create('finders', 'finders', { name: 'Annyong', age: 18 }, done);
       });
     });
   });
 
   after(function(done) {
-    Support.Teardown('finders', done);
+    Support.Teardown('finders', 'finders', done);
   });
 
   describe('simple', function() {
     it("should find using string `name`", function(done) {
       var criteria = { where: { name: 'Steve Holt' } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -55,7 +55,7 @@ describe('adapter `.find()`', function() {
     it("should find using integer `age`", function(done) {
       var criteria = { where: { age: 18 } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -66,7 +66,7 @@ describe('adapter `.find()`', function() {
     });
 
     it("should return all records with empty criteria", function(done) {
-      Adapter.find('test', 'finders', {}, function(err, records) {
+      Adapter.find('finders', 'finders', {}, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -80,7 +80,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `startsWith`", function(done) {
       var criteria = { where: { name: { startsWith: 'Anny' } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -93,7 +93,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `endsWith`", function(done) {
       var criteria = { where: { name: { endsWith: 'Holt' } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -106,7 +106,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `like`", function(done) {
       var criteria = { where: { like: { name: '%eve%' } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -120,7 +120,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `contains`", function(done) {
       var criteria = { where: { name: { contains: 'nny' } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -133,7 +133,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `in` type query", function(done) {
       var criteria = { where: { name: ['Steve Holt', 'Annyong'] } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -147,7 +147,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `lessThan`", function(done) {
       var criteria = { where: { age: { lessThan: 19 } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -160,7 +160,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `lessThanOrEqual`", function(done) {
       var criteria = { where: { age: { lessThanOrEqual: 19 } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -174,7 +174,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `greaterThan`", function(done) {
       var criteria = { where: { age: { greaterThan: 18 } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -187,7 +187,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `greaterThanOrEqual`", function(done) {
       var criteria = { where: { age: { greaterThanOrEqual: 18 } } };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);
@@ -203,7 +203,7 @@ describe('adapter `.find()`', function() {
     it("should properly return records using `limit`", function(done) {
       var criteria = { where: { age: [18, 19] }, limit: 1 };
 
-      Adapter.find('test', 'finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         if(err) throw err;
 
         assert(records);

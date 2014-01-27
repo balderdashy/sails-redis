@@ -24,15 +24,15 @@ describe('adapter `.describe()`', function() {
         }
       };
 
-      Support.Setup('simple', definition, done);
+      Support.Setup('describe', 'simple', definition, done);
     });
 
     after(function(done) {
-      Support.Teardown('simple', done);
+      Support.Teardown('describe', 'simple', done);
     });
 
     it('should properly describe attributes', function(done) {
-      Adapter.describe('test', 'simple', function(err, definition) {
+      Adapter.describe('describe', 'simple', function(err, definition) {
         if(err) throw err;
 
         assert(definition.id.primaryKey);
@@ -65,15 +65,15 @@ describe('adapter `.describe()`', function() {
         }
       };
 
-      Support.Setup('complex', definition, done);
+      Support.Setup('describe', 'complex', definition, done);
     });
 
     after(function(done) {
-      Support.Teardown('complex', done);
+      Support.Teardown('describe', 'complex', done);
     });
 
     it('should properly describe attributes', function(done) {
-      Adapter.describe('test', 'complex', function(err, definition) {
+      Adapter.describe('describe', 'complex', function(err, definition) {
         if(err) throw err;
 
         assert(definition.id.primaryKey);

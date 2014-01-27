@@ -28,9 +28,9 @@ module.exports = function(adapter) {
    * @param {Function} callback
    */
 
-  Support.Setup = function(name, def, callback) {
+  Support.Setup = function(conn, name, def, callback) {
     var connection = {
-      identity: 'test',
+      identity: conn,
       port: 6379,
       host: 'localhost',
       password: null,
@@ -44,7 +44,7 @@ module.exports = function(adapter) {
     };
 
     var collection = this.Configure(name, def);
-    collection.definition.connection = 'test';
+    collection.definition.connection = conn;
 
     var collections = {};
     collections[name] = collection;
@@ -59,9 +59,9 @@ module.exports = function(adapter) {
    * @param {Function} callback
    */
 
-  Support.Teardown = function(collection, callback) {
-    adapter.drop('test', collection, [], function(err) {
-      adapter.teardown('test', callback);
+  Support.Teardown = function(conn, collection, callback) {
+    adapter.drop(conn, collection, [], function(err) {
+      adapter.teardown(conn, callback);
     });
   };
 

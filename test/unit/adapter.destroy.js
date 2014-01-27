@@ -32,10 +32,10 @@ describe('adapter `.destroy()`', function() {
         }
       };
 
-      Support.Setup('destroy', definition, function(err) {
+      Support.Setup('destroy', 'destroy', definition, function(err) {
         if(err) throw err;
 
-        Adapter.create('test', 'destroy', { email: 'jaba@hotmail.com', name: 'Jaba the hut' }, function(err, m) {
+        Adapter.create('destroy', 'destroy', { email: 'jaba@hotmail.com', name: 'Jaba the hut' }, function(err, m) {
           if(err) throw err;
           model = m;
           done();
@@ -44,14 +44,14 @@ describe('adapter `.destroy()`', function() {
     });
 
     after(function(done) {
-      Support.Teardown('destroy', done);
+      Support.Teardown('destroy', 'destroy', done);
     });
 
     it('should delete a record', function(done) {
-      Adapter.destroy('test', 'destroy', { id: model.id }, function(err, status) {
+      Adapter.destroy('destroy', 'destroy', { id: model.id }, function(err, status) {
         if(err) throw err;
 
-        Adapter.find('test', 'destroy', { id: model.id }, function(err, models) {
+        Adapter.find('destroy', 'destroy', { id: model.id }, function(err, models) {
           assert(err);
           assert(err.message === Errors.notFound.message);
           assert(!models);
@@ -79,12 +79,12 @@ describe('adapter `.destroy()`', function() {
         }
       };
 
-      Support.Setup('destroy', definition, function(err) {
+      Support.Setup('destroy', 'destroy', definition, function(err) {
         if(err) throw err;
 
         async.eachSeries([1, 2, 3, 4],
           function(i, done) {
-            Adapter.create('test', 'destroy', { email: i, name: 'User ' + i }, done);
+            Adapter.create('destroy', 'destroy', { email: i, name: 'User ' + i }, done);
           },
           function(err) {
             if(err) throw err;
@@ -95,14 +95,14 @@ describe('adapter `.destroy()`', function() {
     });
 
     after(function(done) {
-      Support.Teardown('destroy', done);
+      Support.Teardown('destroy', 'destroy', done);
     });
 
     it('should delete all records', function(done) {
-      Adapter.destroy('test', 'destroy', { name: { startsWith: 'User' } }, function(err, status) {
+      Adapter.destroy('destroy', 'destroy', { name: { startsWith: 'User' } }, function(err, status) {
         if(err) throw err;
 
-        Adapter.find('test', 'destroy', {}, function(err, models) {
+        Adapter.find('destroy', 'destroy', {}, function(err, models) {
           if(err) throw err;
 
           assert(!models.length);
