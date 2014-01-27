@@ -22,7 +22,7 @@ var config = {
  * Expose Interfaces Used In Adapter
  */
 
-var interfaces = ['semantic', 'queryable', 'scalable'];
+var interfaces = ['semantic', 'queryable', 'migratable', 'associations'];
 
 /**
  * Run Tests using the default redis config
