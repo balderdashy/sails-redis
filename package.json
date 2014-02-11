@@ -34,6 +34,7 @@
   "devDependencies": {
     "mocha": "~1.12.0",
     "waterline-adapter-tests": "git://github.com/balderdashy/waterline-adapter-tests.git#v0.10",
+    "captains-log": "~0.11.1"
   },
   "dependencies": {
     "lodash": "~2.4.1",
@@ -41,5 +42,14 @@
     "async": "~0.2.9",
     "waterline-errors": "git://github.com/vanetix/waterline-errors.git",
     "waterline-criteria": "git://github.com/balderdashy/waterline-criteria.git#v0.10"
+  },
+  "waterlineAdapter": {
+    "waterlineVersion": "~0.10.0",
+    "interfaces": [
+      "semantic",
+      "queryable",
+      "migratable",
+      "associations"
+    ]
   }
 }
