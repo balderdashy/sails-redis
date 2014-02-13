@@ -200,6 +200,26 @@ describe('adapter `.find()`', function() {
   });
 
   describe('additional functionality', function() {
+
+    // Returns error, rather than dying.
+    it("should gracefully fail on invalid criteria.", function(done) {
+      var criteria = {
+        where: {
+          name: {
+            startsWith: 'Steve',
+            captain : 'Stop making a mess'
+          }
+        }
+      };
+
+      Adapter.find('finders', criteria, function(err, records) {
+        assert(err.toString() === 'Error: Invalid query syntax!');
+        assert(!records);
+
+        done();
+      });
+    });
+
     it("should properly return records using `limit`", function(done) {
       var criteria = { where: { age: [18, 19] }, limit: 1 };
 
