@@ -212,7 +212,7 @@ describe('adapter `.find()`', function() {
         }
       };
 
-      Adapter.find('finders', criteria, function(err, records) {
+      Adapter.find('finders', 'finders', criteria, function(err, records) {
         assert(err.toString() === 'Error: Invalid query syntax!');
         assert(!records);
 

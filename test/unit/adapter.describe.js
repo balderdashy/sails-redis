@@ -24,7 +24,10 @@ describe('adapter `.describe()`', function() {
         }
       };
 
-      Support.Setup('describe', 'simple', definition, done);
+      Support.Setup('describe', 'simple', definition, function(err) {
+        if(err) return done(err);
+        Adapter.define('describe', 'simple', definition, done);
+      });
     });
 
     after(function(done) {
@@ -34,7 +37,7 @@ describe('adapter `.describe()`', function() {
     it('should properly describe attributes', function(done) {
       Adapter.describe('describe', 'simple', function(err, definition) {
         if(err) throw err;
-
+        console.log('def', definition)
         assert(definition.id.primaryKey);
         assert(definition.id.type === 'integer');
         assert(definition.name.type === 'string');
@@ -65,7 +68,10 @@ describe('adapter `.describe()`', function() {
         }
       };
 
-      Support.Setup('describe', 'complex', definition, done);
+      Support.Setup('describe', 'complex', definition, function(err) {
+        if(err) return done(err);
+        Adapter.define('describe', 'complex', definition, done);
+      });
     });
 
     after(function(done) {
