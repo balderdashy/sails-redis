@@ -41,15 +41,15 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "mocha": "~1.12.0",
-    "waterline-adapter-tests": "git://github.com/balderdashy/waterline-adapter-tests.git#v0.10",
+    "waterline-adapter-tests": "~0.10.0",
     "captains-log": "~0.11.1"
   },
   "dependencies": {
     "lodash": "~2.4.1",
     "redis": "~0.8.4",
     "async": "~0.2.9",
-    "waterline-errors": "git://github.com/vanetix/waterline-errors.git",
-    "waterline-criteria": "git://github.com/balderdashy/waterline-criteria.git#v0.10"
+    "waterline-errors": "~0.10.0",
+    "waterline-criteria": "~0.10.0"
   },
   "waterlineAdapter": {
     "waterlineVersion": "~0.10.0",
