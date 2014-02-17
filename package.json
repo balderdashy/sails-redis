@@ -1,6 +1,6 @@
 {
   "name": "sails-redis",
-  "version": "0.10.0",
+  "version": "0.10.0-rc1",
   "description": "Redis adapter for waterline",
   "main": "index.js",
   "author": "vanetix <matmcfarland@gmail.com>",
