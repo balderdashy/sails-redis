@@ -37,3 +37,6 @@ To learn more visit the project [on GitHub](https://github.com/balderdashy/water
 #### Why was the `hiredis` dependency removed?
 
 Until further benchmarking can prove its benefit, the headache of having to have a compiler installed for the C binding isn't worth it.  An optional dependency would also be another valid approach.
+
+### How to actually use it?
+How to add a set or list etc. ? Sails models with redis is confusing. 
