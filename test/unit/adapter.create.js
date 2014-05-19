@@ -84,7 +84,7 @@ describe('adapter `.create()`', function() {
     it('should return error on non-auto incrementing primary key', function(done) {
       Adapter.create('create', 'string', { name: 'Luke Skywalker' }, function(err, model) {
         assert(err);
-        assert(err.message === Errors.primaryKeyMissing.message);
+        assert(err.message === Errors.PrimaryKeyMissing.message);
         done();
       });
     });
@@ -121,7 +121,7 @@ describe('adapter `.create()`', function() {
 
         Adapter.create('create', 'unique', attributes, function(err, model) {
           assert(err);
-          assert(err.message === Errors.notUnique.message);
+          assert(err.message === Errors.NotUnique.message);
           assert(!model);
           done();
         });

@@ -52,8 +52,6 @@ describe('adapter `.destroy()`', function() {
         if(err) throw err;
 
         Adapter.find('destroy', 'destroy', { id: model.id }, function(err, models) {
-          assert(err);
-          assert(err.message === Errors.notFound.message);
           assert(!models);
           done();
         });
