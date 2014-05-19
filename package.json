@@ -56,7 +56,6 @@
     "interfaces": [
       "semantic",
       "queryable",
-      "migratable",
       "associations"
     ]
   }
