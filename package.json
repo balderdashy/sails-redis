@@ -46,10 +46,10 @@
   },
   "dependencies": {
     "lodash": "~2.4.1",
-    "redis": "~0.8.4",
-    "async": "~0.2.9",
+    "redis": "~0.10.2",
+    "async": "~0.9.0",
     "waterline-errors": "~0.10.0",
-    "waterline-criteria": "~0.10.2"
+    "waterline-criteria": "~0.10.7"
   },
   "waterlineAdapter": {
     "waterlineVersion": "~0.10.0",
