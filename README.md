@@ -27,6 +27,7 @@ config: {
   port: 6379,
   host: 'localhost',
   password: null,
+  db: null,
   options: {
   
     // low-level configuration
