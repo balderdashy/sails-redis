@@ -1,6 +1,6 @@
 {
   "name": "sails-redis",
-  "version": "0.10.0",
+  "version": "0.10.2",
   "description": "Redis adapter for waterline",
   "main": "index.js",
   "author": "vanetix <matmcfarland@gmail.com>",
@@ -8,6 +8,14 @@
     {
       "name": "Matt McFarland",
       "email": "matmcfarland@gmail.com"
+    },
+    {
+      "name": "Cody Stoltman",
+      "email": "particlebanana@gmail.com"
+    },
+    {
+      "name": "Greg Thornton",
+      "email": "xdissent@me.com"
     },
     {
       "name": "Carlo DiCelico",
@@ -33,13 +41,23 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "mocha": "~1.12.0",
-    "waterline-adapter-tests": "git://github.com/balderdashy/waterline-adapter-tests.git#associations"
+    "waterline-adapter-tests": "~0.10.0",
+    "captains-log": "~0.11.1"
   },
   "dependencies": {
     "lodash": "~2.4.1",
-    "redis": "~0.8.4",
-    "async": "~0.2.9",
-    "waterline-errors": "git://github.com/vanetix/waterline-errors.git",
-    "waterline-criteria": "git://github.com/balderdashy/waterline-criteria.git#associations"
+    "redis": "~0.12.1",
+    "async": "~0.9.0",
+    "waterline-errors": "~0.10.0",
+    "waterline-criteria": "~0.10.7",
+    "waterline-cursor": "~0.0.3"
+  },
+  "waterlineAdapter": {
+    "waterlineVersion": "~0.10.0",
+    "interfaces": [
+      "semantic",
+      "queryable",
+      "associations"
+    ]
   }
 }

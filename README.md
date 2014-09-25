@@ -1,6 +1,6 @@
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
-# Redis Sails/Waterline Adapter [![Build Status](https://travis-ci.org/vanetix/sails-redis.png)](https://travis-ci.org/vanetix/sails-redis)
+# Redis Sails/Waterline Adapter [![Build Status](https://travis-ci.org/balderdashy/sails-redis.png)](https://travis-ci.org/balderdashy/sails-redis)
 
 A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
 
@@ -9,17 +9,13 @@ This `waterline-redis` stores indexes of unique attributes for *relatively* fast
 
 ## Install
 
-To install *sails-redis* run `npm install git+ssh://git@github.com:balderdashy/sails-redis.git --save` from your project directory or add `"sails-redis": "git+ssh://git@github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
-
 In the near future, `sails-redis` will be available on npm.
 
-<!--
 Install is through NPM.
 
 ```bash
 $ npm install sails-redis
 ```
--->
 
 ## Configuration
 
@@ -31,6 +27,7 @@ config: {
   port: 6379,
   host: 'localhost',
   password: null,
+  database: null,
   options: {
   
     // low-level configuration

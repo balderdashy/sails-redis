@@ -23,6 +23,12 @@ The community is what makes Sails/Waterline great, without you we wouldn't have 
 
 Clone this repository, `cd` into it, and run `npm install`.
 
+<!--
+For future use (if needed): instructions for installing from github:
+
+To install *sails-redis* run `npm install git+ssh://git@github.com:balderdashy/sails-redis.git --save` from your project directory or add `"sails-redis": "git+ssh://git@github.com:balderdashy/sails-redis.git"` into *dependencies* in your `package.json`.
+-->
+
 #### Run Tests
 
 To run tests:

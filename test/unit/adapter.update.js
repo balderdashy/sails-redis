@@ -82,7 +82,7 @@ describe('adapter `.update()`', function() {
     it('should check for unique values', function(done) {
       Adapter.update('update', 'update', { where: { name: 'The Dude' }}, { number: 3 }, function(err) {
         assert(err);
-        assert(err.message === Errors.notUnique.message);
+        assert(err.message === Errors.NotUnique.message);
         done();
       });
     });

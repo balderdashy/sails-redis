@@ -84,7 +84,7 @@ describe('adapter `.create()`', function() {
     it('should return error on non-auto incrementing primary key', function(done) {
       Adapter.create('create', 'string', { name: 'Luke Skywalker' }, function(err, model) {
         assert(err);
-        assert(err.message === Errors.primaryKeyMissing.message);
+        assert(err.message === Errors.PrimaryKeyMissing.message);
         done();
       });
     });
@@ -121,7 +121,7 @@ describe('adapter `.create()`', function() {
 
         Adapter.create('create', 'unique', attributes, function(err, model) {
           assert(err);
-          assert(err.message === Errors.notUnique.message);
+          assert(err.message === Errors.NotUnique.message);
           assert(!model);
           done();
         });
@@ -181,15 +181,6 @@ describe('adapter `.create()`', function() {
         assert(model.id === 1);
         assert(model.age === 1);
         assert(model.number === 1);
-        done();
-      });
-    });
-
-    it('should not allow auto increment values to be set', function(done) {
-      Adapter.create('create', 'auto', { age: 1, number: 1 }, function(err, model) {
-        assert(err);
-        assert(err.message === Errors.invalidAutoIncrement.message);
-        assert(!model);
         done();
       });
     });
