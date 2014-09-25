@@ -48,11 +48,12 @@ describe('adapter `.destroy()`', function() {
     });
 
     it('should delete a record', function(done) {
-      Adapter.destroy('destroy', 'destroy', { id: model.id }, function(err, status) {
-        if(err) throw err;
+      Adapter.destroy('destroy', 'destroy', { id: model.id }, function(err) {
+        assert(!err);
 
         Adapter.find('destroy', 'destroy', { id: model.id }, function(err, models) {
-          assert(!models);
+          assert(!err);
+          assert(models.length === 0);
           done();
         });
       });
