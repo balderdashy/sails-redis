@@ -41,6 +41,19 @@ config: {
   }
 };
 ```
+### Example usage in ./config/connections.js
+
+```javascript
+// example values inline
+someRedisServer: {
+  adapter: 'sails-redis',
+  port: 49379,
+  host: '192.168.0.1',
+  password: null,
+  database: 1,
+  options: {...}
+};
+```
 
 #### Low-Level Configuration (for redis driver)
 
