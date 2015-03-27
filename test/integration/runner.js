@@ -68,7 +68,6 @@ new TestRunner({
   // Default connection config to use.
   config: {
     host: 'localhost',
-    database: 'sails-mongo',
     port: 6379,
     schema: true,
     poolSize: 1
@@ -78,7 +77,7 @@ new TestRunner({
   // The set of adapter interfaces to test against.
   // (grabbed these from this adapter's package.json file above)
   interfaces: interfaces,
-  
+
   // The set of adapter features to test against.
   // (grabbed these from this adapter's package.json file above)
   features: features,
