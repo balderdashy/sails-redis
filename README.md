@@ -17,6 +17,9 @@ Install is through NPM.
 $ npm install sails-redis
 ```
 
+## Driver
+By default, sails-redis will use the `redis` npm module, however if you wish to use `ioredis` for sentinel support etc, please ensure you do an `npm install --save ioredis`.
+
 ## Configuration
 
 The following connection configuration is available:
@@ -28,6 +31,7 @@ config: {
   host: 'localhost',
   password: null,
   database: null,
+  driver: 'redis',
   options: {
   
     // low-level configuration
@@ -41,6 +45,8 @@ config: {
   }
 };
 ```
+#### Sentinel Configuration (for ioredis driver)
+When setting the `driver: 'ioredis'` option and `npm install --save ioredis` you have the ability to setup a redis-sentinel for HA configuration. The driver options can be found at https://github.com/luin/ioredis#sentinel.
 
 #### Low-Level Configuration (for redis driver)
 
