@@ -66,7 +66,6 @@ new TestRunner({
   // Default connection config to use.
   config: {
     host: 'localhost',
-    database: 'sails-mongo',
     port: 6379,
     schema: true,
     poolSize: 1
@@ -75,7 +74,10 @@ new TestRunner({
 
   // The set of adapter interfaces to test against.
   // (grabbed these from this adapter's package.json file above)
-  interfaces: interfaces
+  interfaces: interfaces,
+    
+  // Return non-zero code if any test failed
+  failOnError: true
 
   // Most databases implement 'semantic' and 'queryable'.
   //
