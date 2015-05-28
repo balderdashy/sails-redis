@@ -58,6 +58,7 @@
       "semantic",
       "queryable",
       "associations"
-    ]
+    ],
+    "features": []
   }
 }

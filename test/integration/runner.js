@@ -22,10 +22,12 @@ var Adapter = require('../../lib/adapter');
 
 // Grab targeted interfaces from this adapter's `package.json` file:
 var package = {},
-  interfaces = [];
+  interfaces = [],
+  features = [];
 try {
   package = require('../../package.json');
   interfaces = package.waterlineAdapter.interfaces;
+  features = package.waterlineAdapter.features;
 } catch (e) {
   throw new Error(
     '\n' +
@@ -57,7 +59,7 @@ new TestRunner({
 
   // Mocha opts
   mocha: {
-    bail: true
+    bail: false
   },
 
   // Load the adapter module.
@@ -66,7 +68,6 @@ new TestRunner({
   // Default connection config to use.
   config: {
     host: 'localhost',
-    database: 'sails-mongo',
     port: 6379,
     schema: true,
     poolSize: 1
@@ -75,7 +76,14 @@ new TestRunner({
 
   // The set of adapter interfaces to test against.
   // (grabbed these from this adapter's package.json file above)
-  interfaces: interfaces
+  interfaces: interfaces,
+
+  // The set of adapter features to test against.
+  // (grabbed these from this adapter's package.json file above)
+  features: features,
+
+  // Return non-zero code if any test failed
+  failOnError: true
 
   // Most databases implement 'semantic' and 'queryable'.
   //
