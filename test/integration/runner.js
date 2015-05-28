@@ -70,8 +70,7 @@ new TestRunner({
     host: 'localhost',
     port: 6379,
     schema: true,
-    poolSize: 1,
-    database: 2
+    poolSize: 1
   },
 
 
