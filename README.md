@@ -1,6 +1,9 @@
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
-# Redis Sails/Waterline Adapter [![Build Status](https://travis-ci.org/balderdashy/sails-redis.png)](https://travis-ci.org/balderdashy/sails-redis)
+# Redis Sails/Waterline Adapter 
+[![Build Status](https://travis-ci.org/balderdashy/sails-redis.svg?branch=master)](https://travis-ci.org/balderdashy/sails-redis)
+[![npm version](https://badge.fury.io/js/sails-redis.svg)](http://badge.fury.io/js/sails-redis)
+[![Dependency Status](https://david-dm.org/balderdashy/sails-redis.svg)](https://david-dm.org/balderdashy/sails-redis)
 
 A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
 
