@@ -59,6 +59,8 @@
       "queryable",
       "associations"
     ],
-    "features": []
+    "features": [
+      "crossAdapter"
+    ]
   }
 }
