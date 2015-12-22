@@ -52,6 +52,9 @@
     "waterline-criteria": "~0.11.1",
     "waterline-cursor": "~0.0.5"
   },
+  "optionalDependencies": {
+    "hiredis": "~0.4.1"
+  },
   "waterlineAdapter": {
     "waterlineVersion": "~0.10.0",
     "interfaces": [
