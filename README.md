@@ -65,7 +65,7 @@ Note that if both the 'url' notation and the 'host', 'port' and / or 'password' 
 
 ### With Sails
 
-When using this library with sails add the config above to your `config/connections.js` file:
+When using this library with sails add the config below to your `config/connections.js` file:
 
 ```js
   },
