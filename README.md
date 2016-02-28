@@ -12,8 +12,6 @@ This `waterline-redis` stores indexes of unique attributes for *relatively* fast
 
 ## Install
 
-In the near future, `sails-redis` will be available on npm.
-
 Install is through NPM.
 
 ```bash
