@@ -34,7 +34,6 @@ module.exports = function(adapter) {
       port: 6379,
       host: 'localhost',
       password: null,
-      database: 2,
       options: {
             return_buffers: false,
             detect_buffers: false,
