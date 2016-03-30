@@ -51,12 +51,9 @@
       "bluebird": "^3.3.4",
       "lodash": "^4.0.0",
       "redis": "^2.0.0",
-      "waterline-criteria": "^1.0.0",
+      "waterline-criteria": "ryanc1256/waterline-criteria",
       "waterline-cursor": "^0.0.6",
       "waterline-errors": "^0.10.0"
-  },
-  "optionalDependencies": {
-      "hiredis": "^0.4.1"
   },
   "waterlineAdapter": {
       "waterlineVersion": "~0.12.0",

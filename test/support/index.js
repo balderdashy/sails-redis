@@ -34,12 +34,13 @@ module.exports = function(adapter) {
       port: 6379,
       host: 'localhost',
       password: null,
+      database: 2,
       options: {
-        return_buffers: false,
-        detect_buffers: false,
-        socket_nodelay: true,
-        no_ready_check: false,
-        enable_offline_queue: true
+            return_buffers: false,
+            detect_buffers: false,
+            socket_nodelay: true,
+            no_ready_check: false,
+            enable_offline_queue: true
       }
     };
 
