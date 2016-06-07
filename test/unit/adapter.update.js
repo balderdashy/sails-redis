@@ -86,5 +86,13 @@ describe('adapter `.update()`', function() {
         done();
       });
     });
+    
+    it('should update unique fields to another unique value', function(done) {
+      Adapter.update('update', 'update', { where: { name: 'The Dude' }}, { name: 'Lebowski' }, function(err, model) {
+        if(err) throw err;
+        assert(model[0].name === 'Lebowski');
+        done();
+      });
+    });
   });
 });
