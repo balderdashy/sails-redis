@@ -69,6 +69,7 @@ When using this library with sails add the config below to your `config/connecti
   },
   
   redis: {
+    adapter: "sails-redis",
     port: 6379,
     host: 'localhost'
   }
