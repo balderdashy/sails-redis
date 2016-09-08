@@ -63,7 +63,8 @@
       "associations"
     ],
     "features": [
-      "crossAdapter"
+      "crossAdapter",
+      "autoIncrement"
     ]
   }
 }
