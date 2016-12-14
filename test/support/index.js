@@ -35,11 +35,11 @@ module.exports = function(adapter) {
       host: 'localhost',
       password: null,
       options: {
-        return_buffers: false,
-        detect_buffers: false,
-        socket_nodelay: true,
-        no_ready_check: false,
-        enable_offline_queue: true
+            return_buffers: false,
+            detect_buffers: false,
+            socket_nodelay: true,
+            no_ready_check: false,
+            enable_offline_queue: true
       }
     };
 

@@ -37,7 +37,6 @@ describe('adapter `.describe()`', function() {
     it('should properly describe attributes', function(done) {
       Adapter.describe('describe', 'simple', function(err, definition) {
         if(err) throw err;
-        console.log('def', definition)
         assert(definition.id.primaryKey);
         assert(definition.id.type === 'integer');
         assert(definition.name.type === 'string');

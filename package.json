@@ -1,8 +1,7 @@
 {
   "name": "sails-redis",
-  "version": "0.10.7",
+  "version": "1.0.0",
   "description": "Redis adapter for waterline",
-  "main": "index.js",
   "author": "vanetix <matmcfarland@gmail.com>",
   "contributors": [
     {
@@ -20,50 +19,52 @@
     {
       "name": "Carlo DiCelico",
       "email": "carlo@diceli.co"
+    },
+    {
+      "name": "Ryan Clough",
+      "email": "me@ryanclough.co.nz"
     }
   ],
   "scripts": {
-    "test": "make test"
+    "test": "mocha --reporter spec test/**/adapter.*.js"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/balderdashy/sails-redis.git"
+      "type": "git",
+      "url": "https://github.com/balderdashy/sails-redis.git"
   },
   "keywords": [
-    "redis",
-    "orm",
-    "waterline",
-    "sails",
-    "sailsjs",
-    "sails.js"
+      "redis",
+      "orm",
+      "waterline",
+      "sails",
+      "sailsjs",
+      "sails.js"
   ],
   "license": "MIT",
-  "readmeFilename": "README.md",
   "devDependencies": {
-    "mocha": "*",
-    "waterline-adapter-tests": "~0.10.0",
-    "captains-log": "~0.11.1"
+      "mocha": "^2.4.5",
+      "waterline-adapter-tests": "^0.12.0",
+      "captains-log": "~0.11.1"
   },
   "dependencies": {
-    "lodash": "~3.9.0",
-    "redis": "~0.12.0",
-    "async": "~1.2.0",
-    "waterline-errors": "~0.10.0",
-    "waterline-criteria": "~0.11.1",
-    "waterline-cursor": "~0.0.5"
-  },
-  "optionalDependencies": {
-    "hiredis": "~0.4.1"
+      "async": "^1.5.0",
+      "bluebird": "^3.3.4",
+      "lodash": "^4.0.0",
+      "redis": "^2.0.0",
+      "waterline-criteria": "ryanc1256/waterline-criteria",
+      "waterline-cursor": "^0.0.6",
+      "waterline-errors": "^0.10.0"
   },
   "waterlineAdapter": {
-    "waterlineVersion": "~0.10.0",
-    "interfaces": [
-      "semantic",
-      "queryable",
-      "associations"
-    ],
-    "features": [
-      "crossAdapter"
-    ]
+      "waterlineVersion": "~0.12.0",
+      "interfaces": [
+        "semantic",
+        "queryable",
+        "associations"
+      ],
+      "features": [
+        "crossAdapter",
+        "autoIncrement"
+      ]
   }
 }
