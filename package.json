@@ -1,70 +1,62 @@
 {
   "name": "sails-redis",
   "version": "1.0.0",
-  "description": "Redis adapter for waterline",
-  "author": "vanetix <matmcfarland@gmail.com>",
-  "contributors": [
-    {
-      "name": "Matt McFarland",
-      "email": "matmcfarland@gmail.com"
-    },
-    {
-      "name": "Cody Stoltman",
-      "email": "particlebanana@gmail.com"
-    },
-    {
-      "name": "Greg Thornton",
-      "email": "xdissent@me.com"
-    },
-    {
-      "name": "Carlo DiCelico",
-      "email": "carlo@diceli.co"
-    },
-    {
-      "name": "Ryan Clough",
-      "email": "me@ryanclough.co.nz"
-    }
-  ],
+  "description": "Redis adapter for Sails / Waterline.",
+  "author": "The Treeline Company",
+  "contributors": [{
+    "name": "vanetix",
+    "email": " <matmcfarland@gmail.com>"
+  }, {
+    "name": "Matt McFarland",
+    "email": "matmcfarland@gmail.com"
+  }, {
+    "name": "Cody Stoltman",
+    "email": "particlebanana@gmail.com"
+  }, {
+    "name": "Greg Thornton",
+    "email": "xdissent@me.com"
+  }, {
+    "name": "Carlo DiCelico",
+    "email": "carlo@diceli.co"
+  }, {
+    "name": "Ryan Clough",
+    "email": "me@ryanclough.co.nz"
+  }, {
+    "name": "Mike McNeil",
+    "email": " <mission@treeline.io>"
+  }],
   "scripts": {
     "test": "mocha --reporter spec test/**/adapter.*.js"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/balderdashy/sails-redis.git"
+    "type": "git",
+    "url": "https://github.com/treelinehq/sails-redis.git"
   },
   "keywords": [
-      "redis",
-      "orm",
-      "waterline",
-      "sails",
-      "sailsjs",
-      "sails.js"
+    "redis",
+    "orm",
+    "waterline",
+    "sails",
+    "sailsjs",
+    "sails.js"
   ],
   "license": "MIT",
   "devDependencies": {
-      "mocha": "^2.4.5",
-      "waterline-adapter-tests": "^0.12.0",
-      "captains-log": "~0.11.1"
+    "mocha": "^2.4.5",
+    "waterline-adapter-tests": "^0.12.0",
+    "captains-log": "~0.11.1"
   },
   "dependencies": {
-      "async": "^1.5.0",
-      "bluebird": "^3.3.4",
-      "lodash": "^4.0.0",
-      "redis": "^2.0.0",
-      "waterline-criteria": "ryanc1256/waterline-criteria",
-      "waterline-cursor": "^0.0.6",
-      "waterline-errors": "^0.10.0"
+    "redis": "^2.0.0",
+    "waterline-criteria": "ryanc1256/waterline-criteria",
+    "waterline-cursor": "^0.0.6",
+    "waterline-errors": "^0.10.0"
   },
   "waterlineAdapter": {
-      "waterlineVersion": "~0.12.0",
-      "interfaces": [
-        "semantic",
-        "queryable",
-        "associations"
-      ],
-      "features": [
-        "crossAdapter",
-        "autoIncrement"
-      ]
+    "waterlineVersion": "~0.13.0",
+    "interfaces": [
+      "semantic"
+    ],
+    "features": []
   }
 }
