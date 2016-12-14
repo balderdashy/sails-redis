@@ -3,28 +3,36 @@
   "version": "1.0.0",
   "description": "Redis adapter for Sails / Waterline.",
   "author": "The Treeline Company",
-  "contributors": [{
-    "name": "vanetix",
-    "email": " <matmcfarland@gmail.com>"
-  }, {
-    "name": "Matt McFarland",
-    "email": "matmcfarland@gmail.com"
-  }, {
-    "name": "Cody Stoltman",
-    "email": "particlebanana@gmail.com"
-  }, {
-    "name": "Greg Thornton",
-    "email": "xdissent@me.com"
-  }, {
-    "name": "Carlo DiCelico",
-    "email": "carlo@diceli.co"
-  }, {
-    "name": "Ryan Clough",
-    "email": "me@ryanclough.co.nz"
-  }, {
-    "name": "Mike McNeil",
-    "email": " <mission@treeline.io>"
-  }],
+  "contributors": [
+    {
+      "name": "vanetix",
+      "email": " <matmcfarland@gmail.com>"
+    },
+    {
+      "name": "Matt McFarland",
+      "email": "matmcfarland@gmail.com"
+    },
+    {
+      "name": "Cody Stoltman",
+      "email": "particlebanana@gmail.com"
+    },
+    {
+      "name": "Greg Thornton",
+      "email": "xdissent@me.com"
+    },
+    {
+      "name": "Carlo DiCelico",
+      "email": "carlo@diceli.co"
+    },
+    {
+      "name": "Ryan Clough",
+      "email": "me@ryanclough.co.nz"
+    },
+    {
+      "name": "Mike McNeil",
+      "email": " <mission@treeline.io>"
+    }
+  ],
   "scripts": {
     "test": "mocha --reporter spec test/**/adapter.*.js"
   },
@@ -42,15 +50,14 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "waterline-adapter-tests": "^0.12.0",
-    "captains-log": "~0.11.1"
+    "captains-log": "^1.0.2",
+    "mocha": "3.0.2",
+    "waterline-adapter-tests": "^0.12.1"
   },
   "dependencies": {
-    "redis": "^2.0.0",
-    "waterline-criteria": "ryanc1256/waterline-criteria",
-    "waterline-cursor": "^0.0.6",
-    "waterline-errors": "^0.10.0"
+    "@sailshq/lodash": "^3.10.2",
+    "machinepack-redis": "^1.0.3",
+    "redis": "2.6.3"
   },
   "waterlineAdapter": {
     "waterlineVersion": "~0.13.0",
