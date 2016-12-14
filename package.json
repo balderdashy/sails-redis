@@ -1,7 +1,7 @@
 {
-  "name": "sails-redis",
+  "name": "sails-redis-lite",
   "version": "1.0.0",
-  "description": "Redis adapter for Sails / Waterline.",
+  "description": "A lightweight Redis adapter for Sails / Waterline.",
   "author": "The Treeline Company",
   "contributors": [
     {
