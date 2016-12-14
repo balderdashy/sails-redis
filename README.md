@@ -1,4 +1,4 @@
-# sails-redis-lite
+# sails-redis
 
 A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
 
@@ -43,7 +43,7 @@ Note that the leased connection (`db`) is just a [Redis client instance](https:/
 Install is through NPM.
 
 ```bash
-$ npm install sails-redis-lite --save
+$ npm install sails-redis --save
 ```
 
 ## Configuration
