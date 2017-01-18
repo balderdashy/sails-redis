@@ -38,7 +38,8 @@ config: {
     detect_buffers: false,
     socket_nodelay: true,
     no_ready_check: false,
-    enable_offline_queue: true
+    enable_offline_queue: true,
+    prefix: "namespace1:"
   }
 };
 ```
@@ -115,6 +116,8 @@ limits total time for client to reconnect. Value is provided in milliseconds and
 * `max_attempts` defaults to `null`. By default client will try reconnecting until connected. Setting `max_attempts`
 limits total amount of reconnects.
 * `auth_pass` defaults to `null`. By default client will try connecting without auth. If set, client will run redis auth command on connect.
+* `prefix` a string used to prefix all used keys in redis (e.g. namespace1:). Using `prefix`, you can share same redis 
+instance for different applications with same collection names.
 
 ## FAQ
 

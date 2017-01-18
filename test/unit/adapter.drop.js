@@ -38,19 +38,19 @@ describe('adapter `.drop()`', function() {
     Adapter.native('drop', 'drop', function(err, connection) {
       var redis = connection;
 
-      redis.exists('waterline:drop:_sequences:id', function(err, exists) {
+      redis.exists('drop:_sequences:id', function(err, exists) {
         if(err) throw err;
         assert(exists);
 
-        redis.exists('waterline:drop:id', function(err, exists) {
+        redis.exists('drop:id', function(err, exists) {
           if(err) throw err;
           assert(exists);
 
-          redis.exists('waterline:drop:_indicies:email', function(err, exists) {
+          redis.exists('drop:_indicies:email', function(err, exists) {
             if(err) throw err;
             assert(exists);
 
-            redis.exists('waterline:drop:id:1', function(err, exists) {
+            redis.exists('drop:id:1', function(err, exists) {
               if(err) throw err;
               assert(exists);
               done();
