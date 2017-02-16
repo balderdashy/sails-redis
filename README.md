@@ -1,3 +1,7 @@
+> **This is an adapter for Sails v0.12 and earlier**. If you are using v1.0 or later, you can use [sails-redis-lite](https://github.com/wuyanxin/sails-redis-lite), a new, lighter adapter.
+>
+> If you are interested in upgrading this traditional, semantic sails-redis adapter for compatibility with Sails v1, [contact us](http://sailsjs.com/contact)
+
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 # Redis Sails/Waterline Adapter 
