@@ -1,25 +1,27 @@
-> **This is an adapter for Sails v0.12 and earlier**. If you are using v1.0 or later, you can use [sails-redis-lite](https://github.com/wuyanxin/sails-redis-lite), a new, lighter adapter.
+> **This is an adapter for Sails v0.12 and earlier**.  For more Sails-v0.12-compatible alternatives (e.g. [sails-redis-lite](https://github.com/wuyanxin/sails-redis-lite)), see https://www.npmjs.com/search?q=sails%20waterline%20redis.
 >
-> If you are interested in upgrading this traditional, semantic sails-redis adapter for compatibility with Sails v1, [contact us](http://sailsjs.com/contact)
+> **If you are using Sails v1.0 or later, check out the [master branch of this repository](https://github.com/balderdashy/sails-redis).**  But be aware that the new release has a different, lighter-weight API, and may or may not support the usage you're looking for.  If you are interested in upgrading this traditional, semantic sails-redis adapter for compatibility with Sails v1, [contact us](http://sailsjs.com/contact).
 
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 # Redis Sails/Waterline Adapter 
 [![Build Status](https://travis-ci.org/balderdashy/sails-redis.svg?branch=master)](https://travis-ci.org/balderdashy/sails-redis)
-[![npm version](https://badge.fury.io/js/sails-redis.svg)](http://badge.fury.io/js/sails-redis)
+[![npm version](https://badge.fury.io/js/sails-redis.svg)](http://badge.fury.io/js/sails-redis)0.10.7
 [![Dependency Status](https://david-dm.org/balderdashy/sails-redis.svg)](https://david-dm.org/balderdashy/sails-redis)
 
-A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
+A Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app or anything using Waterline for the ORM.
 
-This `waterline-redis` stores indexes of unique attributes for *relatively* fast lookups. Collections with multiple unique constraints will create multiple index sets.
+This `sails-redis` adapter stores indexes of unique attributes for *relatively* fast lookups. Collections with multiple unique constraints will create multiple index sets.
 
 
 ## Install
 
 Install is through NPM.
 
+> Be sure to run the command below, including the semver range.  Otherwise you'll get a different version of this adapter!
+
 ```bash
-$ npm install sails-redis
+$ npm install sails-redis@^0.10.7
 ```
 
 ## Configuration
