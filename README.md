@@ -1,10 +1,31 @@
 # sails-redis
 
-A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
+> **This is an adapter for Sails versions 1.0 and up.**. If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Also note that this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor (see below for more information).
 
-> This adapter **does not support the Queryable interface**.  Instead, it simply provides robust, managed access to the underlying Redis client.  Please see [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis) for a conventional adapter that let's you use Redis to directly store and query data from your models.
+![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
+
+A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
+
+## Purpose
+
+This adapter **does not support the Semantic or Queryable interfaces**.  Instead, it simply provides robust, managed access to the underlying Redis client.
+See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis)
+for examples of conventional adapters that let you use Redis to directly store and query records from your models.
+
+> _If you are interested in upgrading the new, Sails-v1-compatible release of this Redis adapter to support semantic usage (find, create, update, destroy), then please [contact us](http://sailsjs.com/contact)._
+
 
 ## Usage
+
+#### Install
+
+Install is through NPM.
+
+```bash
+$ npm install sails-redis --save
+```
+
+#### Getting started
 
 After installing and configuring this adapter (see below), you'll be able to use it to send commands to Redis from your Sails/Node.js app.
 
@@ -36,15 +57,6 @@ sails.datastore('myRedis').leaseConnection(function during(db, proceed) {
 Note that the leased connection (`db`) is just a [Redis client instance](https://www.npmjs.com/package/redis).  No need to connect it/bind event listeners-- it's already hot and ready to go.  Any fatal, unexpected errors that would normally be emitted as the "error" event are handled by the underlying driver, and can be optionally handled with custom logic by providing a function for `onUnexpectedFailure`.
 
 > Need to use a different Redis client, like ioredis?  Please have a look at the [underlying driver](https://www.npmjs.com/package/machinepack-redis) for the latest info/discussion.
-
-
-## Install
-
-Install is through NPM.
-
-```bash
-$ npm install sails-redis --save
-```
 
 ## Configuration
 
@@ -102,7 +114,7 @@ limits total amount of reconnects.
 
 ## Help
 
-If you have questions or are having trouble, click [here](http://sailsjs.com/support).
+For more examples, or if you get stuck or have questions, click [here](http://sailsjs.com/support).
 
 
 ## Bugs &nbsp; [![NPM version](https://badge.fury.io/js/sails-redis.svg)](http://npmjs.com/package/sails-redis)
