@@ -1,90 +1,81 @@
-> **This is an adapter for Sails v0.12 and earlier**. If you are using v1.0 or later, you can use [sails-redis-lite](https://github.com/wuyanxin/sails-redis-lite), a new, lighter adapter.
->
-> If you are interested in upgrading this traditional, semantic sails-redis adapter for compatibility with Sails v1, [contact us](http://sailsjs.com/contact)
+# sails-redis
+
+> **This is an adapter for Sails versions 1.0 and up.**. If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Also note that this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor (see below for more information).
 
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
-# Redis Sails/Waterline Adapter 
-[![Build Status](https://travis-ci.org/balderdashy/sails-redis.svg?branch=master)](https://travis-ci.org/balderdashy/sails-redis)
-[![npm version](https://badge.fury.io/js/sails-redis.svg)](http://badge.fury.io/js/sails-redis)
-[![Dependency Status](https://david-dm.org/balderdashy/sails-redis.svg)](https://david-dm.org/balderdashy/sails-redis)
+A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
 
-A Sails/Waterline adapter for Redis. May be used in a [Sails](https://github.com/balderdashy/sails) app or anything using Waterline for the ORM.
+## Purpose
 
-This `waterline-redis` stores indexes of unique attributes for *relatively* fast lookups. Collections with multiple unique constraints will create multiple index sets.
+This adapter **does not support the Semantic or Queryable interfaces**.  Instead, it simply provides robust, managed access to the underlying Redis client.
+See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis)
+for examples of conventional adapters that let you use Redis to directly store and query records from your models.
+
+> _If you are interested in upgrading the new, Sails-v1-compatible release of this Redis adapter to support semantic usage (find, create, update, destroy), then please [contact us](http://sailsjs.com/contact)._
 
 
-## Install
+## Usage
+
+#### Install
 
 Install is through NPM.
 
 ```bash
-$ npm install sails-redis
+$ npm install sails-redis --save
 ```
+
+#### Getting started
+
+After installing and configuring this adapter (see below), you'll be able to use it to send commands to Redis from your Sails/Node.js app.
+
+For example, in an action:
+
+```javascript
+var categoryId = 7;
+var key = 'cached_products_for_category_'+categoryId;
+
+sails.datastore('myRedis').leaseConnection(function during(db, proceed) {
+  
+  db.get(key, function (err, cachedData){
+    if (err) { return proceed(err); }
+
+    try {
+      return proceed(undefined, JSON.parse(cachedData));
+    } catch (e) { return proceed(e); }
+
+  });//</ .get() >
+
+}).exec(function (err, cachedProducts){
+  if (err) { return res.serverError(err); }
+
+  return res.json(cachedProducts);
+
+});
+```
+
+Note that the leased connection (`db`) is just a [Redis client instance](https://www.npmjs.com/package/redis).  No need to connect it/bind event listeners-- it's already hot and ready to go.  Any fatal, unexpected errors that would normally be emitted as the "error" event are handled by the underlying driver, and can be optionally handled with custom logic by providing a function for `onUnexpectedFailure`.
+
+> Need to use a different Redis client, like ioredis?  Please have a look at the [underlying driver](https://www.npmjs.com/package/machinepack-redis) for the latest info/discussion.
 
 ## Configuration
 
-The following connection configuration is available:
+This adapter supports [standard datastore configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores), as well as some additional low-level options.
+
+For example, in a Sails app, add the config below to your `config/datastores.js` file:
 
 ```javascript
-// default values inline
-config: {
-  port: 6379,
-  host: 'localhost',
-  password: null,
-  database: null,
-  options: {
-  
-    // low-level configuration
-    // (redis driver options)
-    parser: 'hiredis',
-    return_buffers: false,
-    detect_buffers: false,
-    socket_nodelay: true,
-    no_ready_check: false,
-    enable_offline_queue: true
-  }
-};
+myRedis: {
+  adapter: require('sails-redis'),
+  url: 'redis://localhost:6379',
+
+  // Other available low-level options can also be configured here.
+  // (see below for more information)
+},
 ```
 
-Alternatively the URL notation for configuration can be used for configuration:
+> Note that you can also set Redis as the default datastore-- but this is not recommended for most applications.
 
-``` javascript
-config {
-  url: 'redis://h:abc123@host.com:6379'
-}
-
-// Equivalent to:
-// config: {
-//   port: 6379,
-//   host: 'host.com'
-//   password: 'abc123'
-// }
-// Other portions of the URL, including the 'username' 'h' are ignored
-```
-
-Note that if both the 'url' notation and the 'host', 'port' and / or 'password' notations are used, the non-url configuration options will take precedence.
-
-### With Sails
-
-When using this library with sails add the config below to your `config/connections.js` file:
-
-```js
-  },
-  
-  redis: {
-    adapter: "sails-redis",
-    port: 6379,
-    host: 'localhost'
-  }
-
-```
-
-And then you can make it the default by changing `config/models.js` to show:
-
-```js
-  connection: 'redis',
-```
 
 #### Low-Level Configuration (for redis driver)
 
@@ -120,17 +111,26 @@ limits total time for client to reconnect. Value is provided in milliseconds and
 limits total amount of reconnects.
 * `auth_pass` defaults to `null`. By default client will try connecting without auth. If set, client will run redis auth command on connect.
 
-## FAQ
 
-See `FAQ.md`.
+## Help
 
-
-
-## Contribute
-
-See `CONTRIBUTING.md`.
+For more examples, or if you get stuck or have questions, click [here](http://sailsjs.com/support).
 
 
-## MIT License
+## Bugs &nbsp; [![NPM version](https://badge.fury.io/js/sails-redis.svg)](http://npmjs.com/package/sails-redis)
 
-See `LICENSE.md`.
+To report a bug, [click here](http://sailsjs.com/bugs).
+
+
+## Contributing &nbsp; [![Build Status](https://travis-ci.org/balderdashy/sails-redis.svg?branch=master)](https://travis-ci.org/balderdashy/sails-redis)
+
+Please observe the guidelines and conventions laid out in the [Sails project contribution guide](http://sailsjs.com/contribute) when opening issues or submitting pull requests.
+
+[![NPM](https://nodei.co/npm/sails-redis.png?downloads=true)](http://npmjs.com/package/sails-redis)
+
+## License
+
+This adapter, like the [Sails framework](http://sailsjs.com), is free and open-source under the [MIT License](http://sailsjs.com/license).
+
+
+![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
