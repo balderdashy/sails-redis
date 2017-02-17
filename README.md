@@ -1,18 +1,18 @@
 # sails-redis
 
-> **This is an adapter for Sails versions 1.0 and up.**  If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Also note that this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor (see below for more information).  But you'll find that it's a great way to easily communicate with Redis, with minimal interference and a stable API.
+A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
 
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
-A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
-
 ## Purpose
+
 
 This adapter **does not support the Semantic or Queryable interfaces**.  Instead, it simply provides robust, managed access to the underlying Redis client.
 See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis)
 for examples of conventional adapters that let you use Redis to directly store and query records from your models.
 
-> _If you are interested in upgrading the new, Sails-v1-compatible release of this Redis adapter to support semantic usage (find, create, update, destroy), then please [contact us](http://sailsjs.com/contact)._
+> **This is an adapter for Sails versions 1.0 and up.**  If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Since this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor, be aware that there are breaking changes in your app when you upgrade.  But I think you'll find that this new release is a great way to easily communicate with Redis, with minimal interference and a stable API.
+> _If you are interested in upgrading the new, Sails-v1-compatible release of this Redis adapter to support semantic usage (find, create, update, destroy), then please [contact Mike or another core maintainer](http://sailsjs.com/contact)._
 
 
 ## Usage
@@ -62,7 +62,7 @@ Note that the leased connection (`db`) is just a [Redis client instance](https:/
 
 This adapter supports [standard datastore configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores), as well as some additional low-level options.
 
-For example, in a Sails app, add the config below to your `config/datastores.js` file:
+For example, in a Sails app, add the config below to your [`config/datastores.js`](http://sailsjs.com/anatomy/config/datastores-js) file:
 
 ```javascript
 myRedis: {
@@ -77,9 +77,9 @@ myRedis: {
 > Note that you can also set Redis as the default datastore-- but this is not recommended for most applications.
 
 
-#### Low-Level Configuration (for redis driver)
+#### Low-Level Configuration (for redis client)
 
-Configuration for the underlying Redis driver itself is located as an object under the `options`.  The following options are available:
+Configuration for the underlying Redis client itself is located as an object under the `options`.  The following options are available:
 
 * `parser`: which Redis protocol reply parser to use.  Defaults to `hiredis` if that module is installed.
 This may also be set to `javascript`.
@@ -128,9 +128,12 @@ Please observe the guidelines and conventions laid out in the [Sails project con
 
 [![NPM](https://nodei.co/npm/sails-redis.png?downloads=true)](http://npmjs.com/package/sails-redis)
 
+
+## Acknowledgements
+
+I owe a big thank you to [@ryanc1256](https://github.com/ryanc1256) for all of his work with the original version of this adapter.
+
 ## License
 
 This adapter, like the [Sails framework](http://sailsjs.com), is free and open-source under the [MIT License](http://sailsjs.com/license).
 
-
-![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
