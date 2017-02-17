@@ -1,6 +1,6 @@
 # sails-redis
 
-> **This is an adapter for Sails versions 1.0 and up.**. If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Also note that this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor (see below for more information).
+> **This is an adapter for Sails versions 1.0 and up.**  If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Also note that this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor (see below for more information).  But you'll find that it's a great way to easily communicate with Redis, with minimal interference and a stable API.
 
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
