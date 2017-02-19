@@ -24,6 +24,8 @@ module.exports = {
 
   schema: false,
 
+  datastores: _activeDatastores,//<< exposed for access by sails-hook-orm
+
   defaults: {
 
     // Standard configuration:
