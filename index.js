@@ -18,6 +18,8 @@ module.exports = {
 
   identity: 'sails-redis',
 
+  adapterApiVersion: 1,
+
   syncable: false,
 
   schema: false,
@@ -59,8 +61,7 @@ module.exports = {
    * @param {Function} done
    */
 
-  registerConnection: function(datastoreConfig, allKnownModelDefs, done) {
-    // ^^TODO: in wl core, change this method name--it's super confusing right now.
+  registerDatastore: function(datastoreConfig, allKnownModelDefs, done) {
 
     if(!datastoreConfig.identity) { return done(new Error('Datastore is missing an identity')); }
     if(_activeDatastores[datastoreConfig.identity]) { return done(new Error('Datastore (`'+datastoreConfig.identity+'`) has already been registered by sails-redis')); }
