@@ -35,8 +35,8 @@ For example, in an action:
 var categoryId = 7;
 var key = 'cached_products_for_category_'+categoryId;
 
-sails.datastore('myRedis').leaseConnection(function during(db, proceed) {
-  
+sails.datastore('cache').leaseConnection(function during(db, proceed) {
+
   db.get(key, function (err, cachedData){
     if (err) { return proceed(err); }
 
@@ -65,8 +65,8 @@ This adapter supports [standard datastore configuration](http://sailsjs.com/docu
 For example, in a Sails app, add the config below to your [`config/datastores.js`](http://sailsjs.com/anatomy/config/datastores-js) file:
 
 ```javascript
-myRedis: {
-  adapter: require('sails-redis'),
+cache: {
+  adapter: 'sails-redis',
   url: 'redis://localhost:6379',
 
   // Other available low-level options can also be configured here.
@@ -74,7 +74,7 @@ myRedis: {
 },
 ```
 
-> Note that you can also set Redis as the default datastore-- but this is not recommended for most applications.
+> Note that you probably shouldn't set Redis as the default datastore for your application (your models wouldn't work!)
 
 
 #### Low-Level Configuration (for redis client)
