@@ -32,24 +32,37 @@ After installing and configuring this adapter (see below), you'll be able to use
 For example, in an action:
 
 ```javascript
-var categoryId = 7;
-var key = 'cached_products_for_category_'+categoryId;
+var categoryId = Product.validate('category', req.param('category'));
 
-sails.datastore('cache').leaseConnection(function during(db, proceed) {
+sails.getDatastore('cache').leaseConnection(function during(db, proceed) {
 
-  db.get(key, function (err, cachedData){
+  db.get('cached_products_for_category_'+categoryId, function (err, cachedData){
     if (err) { return proceed(err); }
 
+    var cachedProducts;
     try {
-      return proceed(undefined, JSON.parse(cachedData));
+      cachedProducts = JSON.parse(cachedData);
     } catch (e) { return proceed(e); }
+
+    if (cachedProducts) {
+      return proceed(undefined, cachedProducts);
+    }
+
+    // IWMIH, there are no cached products for this category.
+    // So here we might look up the products (Product.find()) to grab them
+    // from some other database (e.g. mysql), then cache them in Redis.
+    // (skipping all that to keep this example short)
+    var newlyCachedProducts = [ /* ... */ ];
+
+    // Finally, when finished:
+    return proceed(undefined, newlyCachedProducts);
 
   });//</ .get() >
 
-}).exec(function (err, cachedProducts){
+}).exec(function (err, products){
   if (err) { return res.serverError(err); }
 
-  return res.json(cachedProducts);
+  return res.json(products);
 
 });
 ```
