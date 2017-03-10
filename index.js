@@ -41,11 +41,6 @@ module.exports = {
     socket_nodelay: true,
     no_ready_check: false,
     enable_offline_queue: true
-    //
-    // port: 6379, //< TODO: use only `url` instead of these
-    // host: 'localhost', //< (we should really just normalize all of this away in Waterline core)
-    // password: null,
-    // database: null,
     // - - - - - - - - - - - - - - - - - - - -
   },
 
