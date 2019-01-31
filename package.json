@@ -56,13 +56,13 @@
     "node": "^6.0"
   },
   "dependencies": {
-    "machinepack-redis": "^1.2.2"
+    "machinepack-redis": "^2.0.0"
   },
   "devDependencies": {
-    "captains-log": "^1.0.2",
+    "captains-log": "^2.0.1",
     "eslint": "4.11.0",
     "mocha": "3.0.2",
-    "waterline-adapter-tests": "^1.0.0-5"
+    "waterline-adapter-tests": "^1.0.1"
   },
   "waterlineAdapter": {
     "waterlineVersion": "^0.13.0",
