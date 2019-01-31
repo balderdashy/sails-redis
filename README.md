@@ -1,17 +1,14 @@
-# sails-redis
 <h1><span>sails-redis</span><img width="175" alt="image_squidhome@2x.png" src="http://i.imgur.com/RIvu9.png"/></h1>
 
 <h2>Lightweight Redis Adapter for Node.js / Sails Apps</h2>
 
-A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
+A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or any Node.js module using [Waterline](http://waterlinejs.org) as its ORM.
 
-
-## Purpose
-
-This adapter **does not support the Semantic or Queryable interfaces**.  Instead, it simply provides robust, managed access to the underlying Redis client.
-See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis)
-for examples of conventional adapters that let you use Redis to directly store and query records from your models.
-
+> #### Heads up
+> **This adapter _does not support the Semantic or Queryable interfaces_.  Instead, it simply provides robust, managed access to the underlying Redis client.**  That means you can't use it to call methods like `.find()`.  Instead, use it as a simple way to easily configure, obtain a connection, and communicate with Redis (e.g. for caching) within the lifecycle of your Node.js / Sails application.
+> 
+> **Looking for the old repo?**  See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis) for examples of conventional adapters that let you use Redis to directly store and query records from your models.
+>
 > **This is an adapter for Sails versions 1.0 and up.**  If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Since this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor, be aware that there are breaking changes in your app when you upgrade.  But I think you'll find that this new release is a great way to easily communicate with Redis, with minimal interference and a stable API.
 > _If you are interested in upgrading the new, Sails-v1-compatible release of this Redis adapter to support semantic usage (find, create, update, destroy), then please [contact Mike or another core maintainer](http://sailsjs.com/contact)._
 
