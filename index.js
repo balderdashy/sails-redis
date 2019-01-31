@@ -36,11 +36,11 @@ module.exports = {
 
     // Miscellaneous options:
     // - - - - - - - - - - - - - - - - - - - -
-    return_buffers: false,
-    detect_buffers: false,
-    socket_nodelay: true,
-    no_ready_check: false,
-    enable_offline_queue: true
+    return_buffers: false,//eslint-disable-line camelcase
+    detect_buffers: false,//eslint-disable-line camelcase
+    socket_nodelay: true,//eslint-disable-line camelcase
+    no_ready_check: false,//eslint-disable-line camelcase
+    enable_offline_queue: true//eslint-disable-line camelcase
     // - - - - - - - - - - - - - - - - - - - -
   },
 
@@ -70,7 +70,7 @@ module.exports = {
       connectionString: datastoreConfig.url,
       onUnexpectedFailure: datastoreConfig.onUnexpectedFailure,
       meta: datastoreConfig
-    }).exec(function (err, report) {
+    }).exec((err, report)=>{
       if (err) { return done(err); }
 
       // Track the now-active datastore.
@@ -105,7 +105,7 @@ module.exports = {
     // (This drains the connection pool.)
     //
     // > See: https://github.com/treelinehq/machinepack-redis/blob/master/machines/destroy-manager.js
-    Driver.destroyManager({ manager: _activeDatastores[datastoreName].manager }).exec(function (err) {
+    Driver.destroyManager({ manager: _activeDatastores[datastoreName].manager }).exec((err)=>{
       if (err) { return done(err); }
 
       // Untrack this datastore in the registry.
