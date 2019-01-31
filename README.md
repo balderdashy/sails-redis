@@ -6,7 +6,7 @@ A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http:/
 
 > #### Heads up
 > **This adapter _does not support the Semantic or Queryable interfaces_.  Instead, it simply provides robust, managed access to the underlying Redis client.**  That means you can't use it to call methods like `.find()`.  Instead, use it as a simple way to easily configure, obtain a connection, and communicate with Redis (e.g. for caching) within the lifecycle of your Node.js / Sails application.
-> 
+>
 > **Looking for the old repo?**  See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis) for examples of conventional adapters that let you use Redis to directly store and query records from your models.
 >
 > **This is an adapter for Sails versions 1.0 and up.**  If you are using an earlier version of Sails (or Waterline &lt;v0.13), check out the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12).  Since this new release of sails-redis is more lightweight, and does not support the same semantic interface as its predecessor, be aware that there are breaking changes in your app when you upgrade.  But I think you'll find that this new release is a great way to easily communicate with Redis, with minimal interference and a stable API.
@@ -68,6 +68,11 @@ sails.getDatastore('cache').leaseConnection(async (db)=>{
 Note that the leased connection (`db`) is just a [Redis client instance](https://www.npmjs.com/package/redis).  No need to connect it/bind event listeners-- it's already hot and ready to go.  Any fatal, unexpected errors that would normally be emitted as the "error" event are handled by the underlying driver, and can be optionally handled with custom logic by providing a function for `onUnexpectedFailure`.
 
 > Need to use a different Redis client, like ioredis?  Please have a look at the [underlying driver](https://www.npmjs.com/package/machinepack-redis) for the latest info/discussion.
+
+#### Using the Redis client instance
+
+The documentation for the version of `redis` used in this adapter can be found here:
+https://github.com/NodeRedis/node_redis/tree/v.2.8.0#sending-commands
 
 ## Configuration
 
