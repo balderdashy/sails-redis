@@ -1,7 +1,7 @@
 {
   "name": "sails-redis",
   "version": "1.0.0",
-  "description": "A lightweight Redis adapter for Sails / Waterline.",
+  "description": "A lightweight Redis adapter for Sails / Node.js apps.  Useful for caching.",
   "author": "The Sails Company",
   "contributors": [
     {
@@ -30,7 +30,7 @@
     },
     {
       "name": "Mike McNeil",
-      "email": " <mission@sailsjs.com>"
+      "email": "humans@sailsjs.com"
     }
   ],
   "scripts": {
@@ -44,24 +44,25 @@
   },
   "keywords": [
     "redis",
-    "orm",
-    "waterline",
+    "cache",
+    "adapter",
     "sails",
     "sailsjs",
-    "sails.js"
+    "sails.js",
+    "waterline"
   ],
   "license": "MIT",
+  "dependencies": {
+    "machinepack-redis": "^1.2.2"
+  },
   "devDependencies": {
     "captains-log": "^1.0.2",
     "eslint": "3.15.0",
     "mocha": "3.0.2",
     "waterline-adapter-tests": "^1.0.0-5"
   },
-  "dependencies": {
-    "machinepack-redis": "^1.2.2"
-  },
   "waterlineAdapter": {
-    "waterlineVersion": "~0.13.0",
+    "waterlineVersion": "^0.13.0",
     "interfaces": [],
     "features": []
   }
