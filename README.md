@@ -20,7 +20,7 @@ A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http:/
 Install is through NPM.
 
 ```bash
-$ npm install sails-redis --save
+npm install sails-redis
 ```
 
 #### Getting started
