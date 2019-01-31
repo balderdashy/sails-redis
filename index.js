@@ -83,9 +83,8 @@ module.exports = {
       return done(undefined, _activeDatastores[datastoreConfig.identity]);
 
     });//</createManager>
-
-
   },
+
 
   /**
    * Unregister the specified datastore, so that is no longer considered active,
@@ -105,7 +104,9 @@ module.exports = {
     // (This drains the connection pool.)
     //
     // > See: https://github.com/treelinehq/machinepack-redis/blob/master/machines/destroy-manager.js
-    Driver.destroyManager({ manager: _activeDatastores[datastoreName].manager }).exec((err)=>{
+    Driver.destroyManager({
+      manager: _activeDatastores[datastoreName].manager
+    }).exec((err)=>{
       if (err) { return done(err); }
 
       // Untrack this datastore in the registry.
@@ -114,7 +115,6 @@ module.exports = {
       return done();
 
     });//</ Driver.destroyManager() >
-
   }
 
 };
