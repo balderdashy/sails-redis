@@ -27,42 +27,56 @@ npm install sails-redis
 
 After installing and configuring this adapter (see below), you'll be able to use it to send commands to Redis from your Sails/Node.js app.
 
-For example:
+Here's an example demonstrating how to look up a cached value from Redis using async/await:
 
 ```javascript
-var categoryId = 1;//« get from somewhere
+var util = require('util');
 
-sails.getDatastore('cache').leaseConnection(async (db)=>{
+// Made up a fake parameter:
+var key = 'foo';
 
-  db.get('cached_products_for_category_'+categoryId, function (err, cachedData){
-    if (err) { return proceed(err); }
+// Inspired by https://github.com/node-machine/driver-interface/blob/06776813ff3a29cfa80c0011f3affa07bbc28698/layers/cache/get-cached-value.js
+// Redis client docs: https://github.com/NodeRedis/node_redis/tree/v.2.8.0#sending-commands
+// See also https://github.com/sailshq/machinepack-redis/blob/f0892e581286eac24757532513387162396356f7/machines/get-cached-value.js#L79-L94
+// > If Redis returns `null`, then the value at this key is expired or does
+// > not exist.  If a value _was_ found, attempt to JSON.parse() it.
+// > (See `set-cached` for more info on why we're deserializing JSON here.)
+var value = await sails.getDatastore('cache').leaseConnection(async (db)=>{
+  var found = await (util.promisify(db.get).bind(db))(key);
+  if (found === null) {
+    return undefined;
+  } else {
+    return JSON.parse(found);
+  }
+});//¬
+```
 
-    var cachedProducts;
-    try {
-      cachedProducts = JSON.parse(cachedData);
-    } catch (e) { return proceed(e); }
+And here's another async/await example, this time showing how to _set_ a value in Redis, along with a TTL (i.e. expiry):
 
-    if (cachedProducts) {
-      return proceed(undefined, cachedProducts);
-    }
+```javascript
+var util = require('util');
 
-    // IWMIH, there are no cached products for this category.
-    // So here we might look up the products (Product.find()) to grab them
-    // from some other database (e.g. mysql), then cache them in Redis.
-    // (skipping all that to keep this example short)
-    var newlyCachedProducts = [ /* ... */ ];
+// Made up some fake parameters:
+var key = 'foo';
+var value = {
+  coolPhrase: `hello world, it's ${new Date()}`,
+  iCan: ['put','w/e','I','want',4,'here']
+};
+var expiresIn = 1000*60*60*24;
 
-    // Finally, when finished:
-    return proceed(undefined, newlyCachedProducts);
+// Convert `expiresIn` (which is expressed in milliseconds) to seconds,
+// because unlike JavaScript, Redis likes to work with whole entire seconds.
+var ttlInSeconds = Math.ceil(expiresIn / 1000);
 
-  });//</ .get() >
-
-}).exec(function (err, products){
-  if (err) { return res.serverError(err); }
-
-  return res.json(products);
-
-});
+// Inspired by https://github.com/node-machine/driver-interface/blob/06776813ff3a29cfa80c0011f3affa07bbc28698/layers/cache/cache-value.js
+// Redis client docs: https://github.com/NodeRedis/node_redis/tree/v.2.8.0#sending-commands
+// See also https://github.com/sailshq/machinepack-redis/blob/f0892e581286eac24757532513387162396356f7/machines/cache-value.js#L86-L107
+// > Note: Redis expects string values, so we serialize `value` to JSON…
+// > even if it is already a string.  (This is important for seamless reversibility.)
+// > Also note that TTL is seconds, not ms…  I know it's weird -- sorry!
+await sails.getDatastore('cache').leaseConnection(async (db)=>{
+  await (util.promisify(db.setex).bind(db))(key, ttlInSeconds, JSON.stringify(value));
+});//¬
 ```
 
 Note that the leased connection (`db`) is just a [Redis client instance](https://www.npmjs.com/package/redis).  No need to connect it/bind event listeners-- it's already hot and ready to go.  Any fatal, unexpected errors that would normally be emitted as the "error" event are handled by the underlying driver, and can be optionally handled with custom logic by providing a function for `onUnexpectedFailure`.
