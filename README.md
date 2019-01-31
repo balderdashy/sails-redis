@@ -27,12 +27,12 @@ $ npm install sails-redis --save
 
 After installing and configuring this adapter (see below), you'll be able to use it to send commands to Redis from your Sails/Node.js app.
 
-For example, in an action:
+For example:
 
 ```javascript
-var categoryId = Product.validate('category', req.param('category'));
+var categoryId = 1;//« get from somewhere
 
-sails.getDatastore('cache').leaseConnection(function during(db, proceed) {
+sails.getDatastore('cache').leaseConnection(async (db)=>{
 
   db.get('cached_products_for_category_'+categoryId, function (err, cachedData){
     if (err) { return proceed(err); }
