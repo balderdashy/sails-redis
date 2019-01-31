@@ -52,6 +52,9 @@
     "waterline"
   ],
   "license": "MIT",
+  "engines": {
+    "node": "^6.0"
+  },
   "dependencies": {
     "machinepack-redis": "^1.2.2"
   },
