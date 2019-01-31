@@ -1,11 +1,12 @@
 # sails-redis
+<h1><span>sails-redis</span><img width="175" alt="image_squidhome@2x.png" src="http://i.imgur.com/RIvu9.png"/></h1>
+
+<h2>Lightweight Redis Adapter for Node.js / Sails Apps</h2>
 
 A lightweight Sails/Waterline adapter for Redis. May be used in a [Sails](http://sailsjs.com) app, or anything using [Waterline](http://waterlinejs.org) for the ORM.
 
-![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 ## Purpose
-
 
 This adapter **does not support the Semantic or Queryable interfaces**.  Instead, it simply provides robust, managed access to the underlying Redis client.
 See the [for-sails-0.12 branch](https://github.com/balderdashy/sails-redis/tree/for-sails-0.12) of this repo or [ryanc1256/sails-redis](https://github.com/ryanc1256/sails-redis)
